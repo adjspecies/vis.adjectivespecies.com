@@ -1,4 +1,4 @@
 vis.adjectivespecies.com
 ========================
 
-[adjective][species] data visualizations
+This repository contains the [adjective][species] data visualizations (and the whole website, really).
