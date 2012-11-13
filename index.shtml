@@ -8,5 +8,8 @@
     <li><a href="furrysurvey">The State of Furry</a> - Statistics of the furry fandom from Klisoura's Furry Survey.</li>
     <li><a href="microsurvey">Psychographic Microsurvey</a> - Additional statistics from Klisoura's microsurvey (sneak peek!).</li>
     <li><a href="yearsorientation">Years in the fandom vs. sexual orientation</a></li>
+    <li><a href="canidae">Species Distribution - Canidae</a></li>
+    <li><a href="mustelidae">Species Distribution - Mustelidae</a></li>
+    <li><a href="sexgender">Sexuality and Gender Identity</a></li>
 </ul>
 <!--#include virtual="/includes/footer.html"-->
