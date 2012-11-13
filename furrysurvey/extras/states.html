@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <title>State of Furry Extras - Density in US</title>
+        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/base.css" />
+        <link rel="stylesheet" type="text/css" href="../style.css" />
+        <link rel="stylesheet" type="text/css" href="colorbrewer.css" />
+        <script type="text/javascript" src="http://lib.jnsq.us/polymaps"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+        <script type="text/javascript" src="states.js"></script>
+        <style>
+            #fig {
+                width: 800px;
+                height: 600px;
+                border: 2px solid #99b;
+            }
+            .layer path {
+                stroke: #fff;
+                stroke-width: 1.5px;
+                vector-effect: non-scaling-stroke;
+            }
+            .compass .back {
+                fill: #eef;
+                fill-opacity: .8;
+            }
+
+            .compass .fore {
+                stroke: #99b;
+                stroke-width: 1.5px;
+            }
+
+            .compass rect.back.fore {
+                fill: #99b;
+                fill-opacity: .3;
+                stroke: #eef;
+                stroke-width: 1px;
+                shape-rendering: crispEdges;
+            }
+
+            .compass .direction {
+                fill: none;
+            }
+
+            .compass .chevron {
+                fill: none;
+                stroke: #99b;
+                stroke-width: 5px;
+            }
+
+            .compass .zoom .chevron {
+                stroke-width: 4px;
+            }
+
+            .compass .active .chevron, .compass .chevron.active {
+                stroke: #fff;
+            }
+
+            .compass.active .active .direction {
+                fill: #99b;
+            }
+        </style>
+        <script type="text/javascript">
+            var quantile;
+            $(function() {
+var po = org.polymaps;
+
+// Compute noniles.
+quantile = pv.Scale.quantile()
+    .quantiles(9)
+    .domain(pv.values(statesData))
+    .range(0, 8);
+
+var map = po.map()
+    .container(document.getElementById("fig").appendChild(po.svg("svg")))
+    .center({lat: 40, lon: -95})
+    .zoomRange([3, 7])
+    .zoom(4)
+    .add(po.interact());
+
+map.add(po.image()
+    .url(po.url("http://{S}tile.cloudmade.com"
+    + "/a4e5c00ce58842dba59526e278c4d319" // http://cloudmade.com/register
+    + "/20760/256/{Z}/{X}/{Y}.png")
+    .hosts(["a.", "b.", "c.", ""])));
+
+map.add(po.geoJson()
+    .url("http://polymaps.appspot.com/state/{Z}/{X}/{Y}.json")
+    .on("load", load))
+
+map.add(po.compass()
+    .pan("none"));
+
+map.container().setAttribute("class", "Blues");
+
+function load(e) {
+    for (var i = 0; i < e.features.length; i++) {
+        var feature = e.features[i], d = statesData[feature.data.properties.name];
+        if (d == undefined) {
+            feature.element.setAttribute("display", "none");
+        } else {
+            feature.element.setAttribute("class", "q" + quantile(d) + "-" + 9);
+            feature.element.appendChild(po.svg("title").appendChild(document.createTextNode(feature.data.properties.name + ": " + d)).parentNode);
+        }
+    }
+}
+
+});
+                </script>
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
+                    <ul class="nav">
+                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
+                        <li class="active"><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
+                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
+                        <li><a href="http://furaffinity.net/user/adjspecies">FurAffinity</a></li>
+                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header>
+            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
+        </header>
+        <article>
+            <h1>The State of Furry Extras</h1>
+            <section>
+                <div id="fig">
+                </div>
+                <div id="expound">
+                    <h2>Furries by State in the US</h2>
+                    <p>The darker the state, the more furries there.  It appears that furries like the sand states and the coasts, though more likely is that they are clustered around tech centers and big cities.</p>
+                    <p>Data via <a  href="http://forums.furaffinity.net/threads/61673-Furs-by-state-province-other-IV">this thread</a> on the FA forums, accessed Wednesday, December 8th 2010 at 4:08 PM MDT; informal data collection.</p>
+                </div>
+                <div id="links"><a href=".">Back to extra visualizations</a></div>
+            </section>
+        </article>
+        <footer>
+            <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license
+        </footer>
+    </body>
+</html>

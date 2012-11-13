@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Microsurvey Results</title>
+        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/base.css" />
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://klisoura.com/microsurvey_build_vars.php"></script>
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
+                    <ul class="nav">
+                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
+                        <li class="active"><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
+                        <li><a href="http://forums.adjectivespecies.com">Forums</a></li><li>
+                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
+                        <li><a href="http://furaffinity.net/user/adjspecies">FurAffinity</a></li>
+                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header>
+            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
+        </header>
+        <article>
+            <h1>Microsurvey Results</h1>
+            <section>
+                <p>Here are the live results from the psychographic microsurvey that offered in tandem with the full <a href="../furrysurvey">Furry Survey</a>.  The answers to the questions from this survey were used to conduct additional research into some potential shared psychological traits of the members of the furry fandom.  Questions were provided as statements and answered on a six-level scale from "Strongly Disagree" to "Strongly Agree"  Below, you can see the general outcome of the results and explore correlations between the answers to those questions.</p>
+                <p>Hover over the bars to see the full question text</p>
+                <div id="fig" style="margin:auto">
+                    <script type="text/javascript+protovis">
+var questions = ["Faith and spirituality is a good way of understanding the world","My friends look to me for advice about movies, music, video games, or pop culture","In general, I'd rather make something instead of buying it","I'm more talented than most people in my peer group","I value having cutting-edge technology","I'd rather patronize a small business than a big company","Creativity is one of my strongest attributes","Where pop culture is concerned, I'm ahead of the curve","I admit, I have a tendency to overthink things","Mass media is too 'lowest common denominator' for my tastes","I enjoy being able to lead and influence others","I tend to focus on a few specific interests of mine","It's important to learn more about other countries","People are too reliant on technology these days","Even if technically illegal, file-sharing of copyrighted material isn't that big a deal","It's important for people to be politically active","In general, I want to be considered fashionable","Doing new things is an engaging, fun challenge","It's better to have an exciting life than one where every day is predictable","I believe in learning for learning's sake -- it doesn't need to have a purpose","I find a sense of routine comforting","Advertising is a useful source of information","What other people think of me is important","I like learning about how the universe works","When something is confusing, it's better to find a simpler option than to spend time trying to figure it out","My decisions are motivated primarily by my moral code","People are more distant from each other these days","I'm often the first person in my group of friends to try something new","I consider myself to be an intellectual","I have a tendency to buy things on impulse","I find corporations, and corporate products, rather soulless and uninspiring","I enjoy traveling and discovering new things and places"];
+
+var shortnames = ["Faith and spirituality", "Friends seek my advice", "Rather make than buy", "More talented", "Technological", "Small-businesses prefered", "Creative", "Hip", "Overthinker", "Not into mass media", "Influential or leader", "Focused", "Learn about other countries", "Too reliant on tech", "File-sharing okay", "Politically active", "Fashionable", "New things", "Excitement over routine", "Learning", "Routine comforting", "Advertising is useful", "Important what others think", "Like learning", "Simpler alternatives", "Moral", "People are distant now", "First at new things", "Intellectual", "Impulsive", "Anti-corporate", "Enjoy travel"];
+
+var colors = ["rgb(255, 63, 0)", "rgb(255, 127, 14)", "rgb(255, 187, 120)", "rgb(180, 255, 170)", "rgb(130, 225, 120)", "rgb(50, 200, 40)"];
+
+var height = responses.length;
+var stack = [];
+for (var i = 0; i < height; i++) {
+    for (var j = 3; j < responses[i].length; j++) {
+        if (stack[responses[i][j] - 1]) {
+            stack[responses[i][j] - 1][j - 3]++;
+        } else {
+            stack[responses[i][j] - 1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            stack[responses[i][j] - 1][j - 3]++;
+        }
+    }
+}
+var x = pv.Scale.linear(0, 31).range(0, 830);
+
+var vis = new pv.Panel()
+    .width(940)
+    .height(height)
+    .bottom(155)
+    .left(90);
+
+vis.add(pv.Layout.Stack)
+    .layers(stack)
+    .x(function(d) x(this.index))
+    .y(function(d) d)
+.layer.add(pv.Bar)
+    .width(10)
+    .cursor("crosshair")
+    .fillStyle(function(d, p) colors[stack.indexOf(p)])
+    .title(function() questions[this.index]);
+
+vis.add(pv.Rule)
+    .top(height / 2)
+    .width(840)
+    .strokeStyle("#fff")
+    .data(shortnames)
+.add(pv.Label)
+    .visible(true)
+    .text(function(d) d)
+    .textAngle(3 / -Math.PI)
+    .textBaseline("middle")
+    .textAlign("right")
+    .top(height)
+    .left(function() x(this.index) + 5);
+
+
+vis.add(pv.Label)
+    .text("Strongly Agree")
+    .left(0)
+    .textAlign("right")
+    .textStyle("#555")
+    .top(10);
+vis.add(pv.Label)
+    .text("Strongly Disagree")
+    .left(0)
+    .textAlign("right")
+    .textStyle("#555")
+    .bottom(0);
+vis.add(pv.Label)
+    .text("Total number of respondents (live): " + height)
+    .bottom(-150)
+    .left(200)
+    .textBaseline("bottom");
+vis.render();
+                    </script>
+                </div>
+            </section>
+        </article>
+        <footer>
+            <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license
+        </footer>
+    </body>
+</html>

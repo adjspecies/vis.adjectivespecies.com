@@ -1,0 +1,144 @@
+<!--#set var="title" value="State of Furry - Activities"-->
+<!--#set var="header" value="State of Furry - Activities"-->
+<!--#include virtual="/includes/header.html"-->
+        <link rel="stylesheet" type="text/css" href="http://vis.mjs-svc.com/_lib/theme/css/smoothness/jquery-ui-1.8.6.custom.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#slider').slider({
+                    value: 2008,
+                    min: 2008,
+                    max: 2010,
+                    step: 1,
+                    slide: function(ev, ui) {
+                        updateYear(ui.value);
+                    }
+                });
+            });
+        </script>
+        <style>
+            #fig {
+                width: 710px;
+            }
+            #slider, #labels {
+                width: 120px;
+                font-size: 11pt;
+                text-align: center;
+                margin: auto;
+            }
+
+            table {
+                width: 100%;
+            }
+        </style>
+<!--#include virtual="/includes/top.html"-->
+                <p>This question asks the respondent how they would describe themselves and provides a list of possible answers, shown below.  Use the slider to change the year displayed.</p>
+                <div id="fig">
+                    <script type="text/javascript+protovis">
+var currYear = 2008;
+var vis = new pv.Panel()
+    .width(650)
+    .height(650);
+
+var activities = vis.add(pv.Wedge)
+    .data(pv.entries(data[currYear].selfDescribed))
+    .left(350)
+    .bottom(350)
+    .innerRadius(function(d) 350 * (this.index * 0.06 + 0.06))
+    .outerRadius(function(d) 350 * (this.index * 0.06 + 0.12))
+    .startAngle(-Math.PI / 2)
+    .angle(function(d) 2 * Math.PI * (d.value / data[currYear].n))
+    .fillStyle(function(d) "hsl(" + (360 * (d.value / data[currYear].n)) + ", 50%, 60%)")
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .cursor("crosshair")
+    .title(function(d) d.key);
+activities.anchor("end").add(pv.Label)
+    .font("12px sans-serif")
+    .textStyle("#000")
+    .textMargin(7)
+    .text(function(d) ((d.value / data[currYear].n) * 100).toFixed(1) + "%");
+activities.anchor("start").add(pv.Label)
+    .font("bold 12px sans-serif")
+    .textAngle(Math.pi)
+    .textBaseline("middle")
+    .textAlign("right")
+    .textStyle("#000")
+    .textMargin(7)
+    .text(function(d) d.key);
+var yearLabel = vis.add(pv.Label)
+    .text("Year: " + currYear)
+    .font("12px sans-serif")
+    .top(50)
+    .right(100);
+var nLabel = vis.add(pv.Label)
+    .text("n = " + data[currYear].n)
+    .font("12px sans-serif")
+    .top(70)
+    .right(100);
+vis.render();
+
+
+function updateYear(year) {
+    currYear = year;
+    activities.data(pv.entries(data[currYear].selfDescribed));
+    yearLabel.text("Year: " + currYear);
+    nLabel.text("n = " + data[currYear].n);
+    vis.render();
+}
+
+function sparkline(field) {
+    var spark = new pv.Panel()
+        .width(30)
+        .height(10)
+        .margin(2)
+    .add(pv.Line)
+        .data(pv.values(data))
+        .left(function() this.index * 15)
+        .bottom(function(d) 10 * (d.selfDescribed[field] / d.n))
+        .lineWidth(1)
+        .strokeStyle("#007")
+        .interpolate("monotone")
+    .add(pv.Dot)
+        .radius(1);
+    spark.render();
+}
+                    </script>
+                </div>
+                <div id="slider"></div>
+                <div id="labels">2008 - 2009 - 2010</div>
+                <div id="expound">
+                    <h2>Activities</h2>
+                    <p>With so many things to do in the fandom, it's interesting to see just how many people are into what.  Despite how much the visualization above seems to shift, the trends of each activity over time tend to stay fairly static, looking fairly flat, i.e.: <script type="text/javascript+protovis">sparkline("A visual artist");</script>.  A few trends have seen some change over time, however, such as a slight decrease in participants who describe themselves as con-goers <script type="text/javascript+protovis">sparkline("A con-goer");</script> or advocates of animal rights <script type="text/javascript+protovis">sparkline("An advocate of animal rights");</script>.  Below are all the trends:</p>
+                    <table>
+                        <tr>
+                            <td><script type="text/javascript+protovis">sparkline("An advocate of animal rights");</script> An advocate of animal rights</td>
+                            <td><script type="text/javascript+protovis">sparkline("Fluent in one or more non-native languages");</script> Fluent in one or more non-native languages</td>
+                            <td><script type="text/javascript+protovis">sparkline("A fan of anime");</script> A fan of anime</td>
+                            <td><script type="text/javascript+protovis">sparkline("A fan of science fiction");</script> A fan of science fiction</td>
+                        </tr>
+                        <tr>
+                            <td><script type="text/javascript+protovis">sparkline("A fan of RPG games");</script> A fan of RPG games</td>
+                            <td><script type="text/javascript+protovis">sparkline("Active online");</script> Active online</td>
+                            <td><script type="text/javascript+protovis">sparkline("A con-goer");</script> A con-goer</td>
+                            <td><script type="text/javascript+protovis">sparkline("A 'fursuiter'");</script> A 'fursuiter'</td>
+                        </tr>
+                        <tr>
+                            <td><script type="text/javascript+protovis">sparkline("A 'plushophile'");</script> A 'plushophile'</td>
+                            <td><script type="text/javascript+protovis">sparkline("A 'zoophile'");</script> A 'zoophile'</td>
+                            <td><script type="text/javascript+protovis">sparkline("An author");</script> An author</td>
+                            <td><script type="text/javascript+protovis">sparkline("A musical artist");</script> A musical artist</td>
+                        </tr>
+                        <tr>
+                            <td><script type="text/javascript+protovis">sparkline("A visual artist");</script> A visual artist</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="links">
+                    <a href="sexImportance.shtml">&laquo; Importance of Sex</a> - <a href=".">Home</a> - <a href="location.shtml">Location &raquo;</a>
+                </div>
+<!--#include virtual="/includes/footer.html"-->

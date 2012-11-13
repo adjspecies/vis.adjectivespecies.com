@@ -1,0 +1,12 @@
+<!--#set var="title" value="Visualizations"-->
+<!--#set var="header" value="Visualizations"-->
+
+<!--#include virtual="/includes/header.html"-->
+<!--#include virtual="/includes/top.html"-->
+<ul>
+    <li><a href="fastats">FurAffinity.net Submission Statistics</a> - See how your submissions stack up against each other!</li>
+    <li><a href="furrysurvey">The State of Furry</a> - Statistics of the furry fandom from Klisoura's Furry Survey.</li>
+    <li><a href="microsurvey">Psychographic Microsurvey</a> - Additional statistics from Klisoura's microsurvey (sneak peek!).</li>
+    <li><a href="yearsorientation">Years in the fandom vs. sexual orientation</a></li>
+</ul>
+<!--#include virtual="/includes/footer.html"-->

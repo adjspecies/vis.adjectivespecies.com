@@ -1,0 +1,54 @@
+<!--#set var="title" value="State of Furry - Religion"-->
+<!--#set var="header" value="State of Furry - Religion"-->
+<!--#include virtual="/includes/header.html"-->
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <style> 
+            #fig {
+                width: 400px;
+            }
+        </style> 
+<!--#include virtual="/includes/top.html"-->
+                <p>This question asked respondents to choose their religion from a list.  Data is only readily available from the 2008 survey.</p> 
+                <div id="fig"> 
+                    <script type="text/javascript+protovis"> 
+var n = pv.sum(pv.values(data[2008].religion));
+var angle = pv.Scale.linear(0, n).range(0, 2 * Math.PI);
+var percent = pv.Scale.linear(0, n).range(0, 100);
+var vis = new pv.Panel()
+    .width(400)
+    .height(400);
+ 
+vis.add(pv.Wedge)
+    .data(pv.entries(data[2008].religion))
+    .left(200)
+    .top(200)
+    .innerRadius(100)
+    .outerRadius(200)
+    .angle(function(d) angle(d.value))
+    .fillStyle(function(d) "hsl(" + (900 * (d.value / data[2008].n)) + ", 90%, 40%)")
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .cursor("crosshair")
+    .title(function(d) d.key + " - " + percent(d.value).toFixed(1) + "%")
+.anchor("end").add(pv.Label)
+    .visible(function(d) d.value > 20)
+    .text(function(d) d.key + " - " + percent(d.value).toFixed(1) + "%");
+vis.anchor("center").add(pv.Label)
+    .text("Religions (2008 data only)");
+vis.add(pv.Label)
+    .bottom(0)
+    .left(0)
+    .text("n=" + n + " (" + (n / data[2008].n * 100).toFixed(1) + "%)");
+vis.render();
+                    </script> 
+                </div> 
+                <div id="expound"> 
+                    <h2>Religion</h2>
+                    <p>Opinions of religion within the fandom are wide-ranging.  However, many have noted that there tend to be more who think negatively about religion than those who think positively of it, so it's easy to jump to the conclusion that a majority of furries would be atheist or agnostic.  Indeed, a large portion are, but it appears that it's not quite as drastic as some might think.  The spread across Christian denominations is fairly consistent with America, though pagan religions feature more prominently.  Islam, with 0.2% of the respondents, is very under-represented, perhaps due to the faith's strict views on sex combined with the relative prominence of sex within the fandom.</p> 
+                </div> 
+                <div id="links">
+                    <a href="howFurry.shtml">&laquo; How Furry</a> - <a href=".">Home</a> - <a href="sexImportance.shtml">Importance of Sex &raquo;</a>
+                </div>
+<!--#include virtual="/includes/footer.html"-->

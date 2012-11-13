@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>State of Furry Extras - Species</title>
+        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/base.css" />
+        <link rel="stylesheet" type="text/css" href="../style.css" />
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="species.js"></script>
+        <style>
+            #fig {
+                width: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
+                    <ul class="nav">
+                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
+                        <li class="active"><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
+                        <li><a href="http://forums.adjectivespecies.com">Forums</a></li>
+                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
+                        <li><a href="http://furaffinity.net/user/adjspecies">FurAffinity</a></li>
+                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header>
+            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
+        </header>
+        <article>
+            <h1>The State of Furry Extras</h1>
+            <section>
+                <div id="fig">
+                    <script type="text/javascript+protovis">
+var n = pv.sum(pv.values(speciesData).map(function(d) d.length));
+var angle = pv.Scale.linear(0, n).range(0, 2 * Math.PI);
+var vis = new pv.Panel()
+.width(400)
+.height(400)
+.add(pv.Wedge)
+.data(pv.entries(speciesData))
+.top(200)
+.left(200)
+.innerRadius(70)
+.outerRadius(200)
+.angle(function(d) angle(d.value.length))
+.fillStyle(function(d) "hsl(" + (d.value.length ) + ", 50%, 70%)")
+.lineWidth(1)
+.strokeStyle("#fff")
+.cursor("crosshair")
+.title(function(d) d.key + " - " + (d.value.length / n * 100).toFixed(1) + "%")
+.anchor("end").add(pv.Label)
+.visible(function(d) d.value.length > 9)
+.font("8pt sans-serif")
+.text(function(d) d.key);
+vis.render();
+                </script>
+                </div>
+                <div id="expound">
+                    <h2>Species breakdown</h2>
+                    <p>Just a quick illustration of how prevalent canids (dogs, foxes, wolves, etc.) are within the fandom, though there are a few surprises such as at least 1% of respondents being some form of Pok&eacute;mon, more than twice the number of cervids!</p>
+                    <p>Data via <a  href="http://forums.furaffinity.net/threads/61671-Furs-By-Species-2">this thread</a> on the FA forums, accessed Wednesday, December 8th 2010 at 2:31 PM MDT; informal data collection.</p>
+                </div>
+                <div id="links"><a href=".">Back to extra visualizations</a></div>
+            </section>
+        </article>
+        <footer>
+            <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license
+        </footer>
+    </body>
+</html>

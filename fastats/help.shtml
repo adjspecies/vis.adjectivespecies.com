@@ -1,0 +1,28 @@
+<!--#set var="title" value="FA Stats Visualizer Help"-->
+<!--#set var="header" value="FA Stats Visualizer Help"-->
+
+<!--#include virtual="/includes/header.html"-->
+<!--#include virtual="/includes/top.html"-->
+<div id="vis">
+    <dl>
+        <dt>What does this do?</dt>
+        <dd>This tool takes your FA stats pages and condenses them down to the bare data needed by the visualizer and then displays that in a browser using a JavaScript library called Protovis</dd>
+        <dt>Cool, how do I use it?</dt>
+        <dd>You can <a href="submit.php">submit</a> your own stats pages using the provided form. Simply type in your FA user name that you use to log in (<em>this tool will never ask for your password!</em> No cross-site requests are made - the tool simply snags useful data out of the stats pages), then drop the source code of each stats page into the text box.  You can get the source by right clicking on the page and clicking view source, then copying that all (ctrl-A followed by ctrl-C) and pasting it into the provided text area.  The check box marked 'append' at the end of the form will append each stats page (if you have more than one) when its checked, or wipe out previous data (for the first page, or if you mess up) when unchecked.</dd>
+        <dt>But why can't it just read my stat pages from my username?</dt>
+        <dd>Stat pages are private - you may only view your own stats on FA, not anyone else's.  Since this program doesn't log in as you, it won't be able to view your stats.</dd>
+        <dt>Does that mean anyone can view the stats I visualize in this tool?  What if I don't want others to see my lousy/great/normal statistics?</dt>
+        <dd>Yes, everyone will be able to view your statistics, though no private date will be displayed (no private data can be accessed, for that matter).  All data collected from stats is visible on each submissions page, anyway.  If you don't want others to view your stats, you probably shouldn't use this tool!</dd>
+        <dt>I want to use this tool for myself!</dt>
+        <dd>You are welcome to!  It's provided under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA license</a> - that means you can use it for non-commercial purposes, so long as you attribute it to me and share it under the same license.  If you want more info about the license* or help in setting it up, please feel free to <a href="mailto:mjs+fastats@mjs-svc.com">shoot me an email</a> with your questions, comments, or concerns!</dd>
+        <dt>What is the "Rating/Type" display?</dt>
+        <dd>This display shows the rating with the color of the bar, the type of the submission above the bar, and the relative popularity with the height of the bar.</dd>
+        <dt><em>Jinggo78 asks:</em> What kind of color graph is in the middle? I'm not sure I understand it. Is popularity higher with more views and comments?</dt>
+        <dd>The graph in the middle is intended to show trends over time - it's called a silohouette or stream graph, a type of stacked area chart. If you get more popular over time, there's chance that you'll see it trending toward taller on the left side and shorter on the right side.  It also makes it easy to see statistical outliers such as pieces LOTS of people liked, and pieces no one liked.  This holds true even within the different types, such as if there is a relatively large amount of comments or faves as compared to views.  Popularity is based on an average of your comments, faves, and views for each piece. If 30 people view your piece, but no one comments or faves, you get 10 popularity points, but if 30 people fave and comment, then you get 30 popularity points.  Popularity can also help with outliers, but can be a little misleading if a relatively large number of people view an image but don't comment or fave, such as a meme template.</dd>
+        <dt>How do I share this on FA/DA/etc?</dt>
+        <dd>First of all, you can always link to your visualization by just copy/pasting the URL.  If you want to share an image, though, the easiest way would be to take a screen shot by hitting 'Print Screen' and pasting the screen shot into an image editor.  Then you can crop it and post it online.</dd>
+    </dl>
+    <p style="font-size: 75%">* This was deliberately vague - if you want to use it, email me to at least let me know!</p>
+</div>
+<p style="text-align: center"><a href=".">FurAffinity.net Statistics Visualizer</a></p>
+<!--#include virtual="/includes/footer.html"-->

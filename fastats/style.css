@@ -1,0 +1,41 @@
+h1 {
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+dt {
+    background-color: #ddd;
+    padding: 5px;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#vis {
+    width: 1000px;
+    margin: auto;
+    border: 2px solid #000;
+}
+
+#copyright {
+    clear: both;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.odd {
+    background-color: #eee;
+    padding: 0.5em;
+}
+.even {
+    background-color: #ddd;
+    padding: 0.5em;
+}

@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    margin-top: 40px;
+    font-family: serif;
+}
+
+header {
+    width: 100%;
+    background: url(http://assets.adjectivespecies.com/as-stripes.png);
+    text-align: center;
+}
+
+header img {
+    margin: auto;
+}
+
+article, footer {
+    width: 960px;
+    margin: auto;
+}
+
+footer {
+    margin-top: 2em;
+}
+
+section {
+    border: 2px solid #eee;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    margin: 0;
+    padding: 1em;
+    min-height: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.5em;
+    font-family: sans-serif;
+}

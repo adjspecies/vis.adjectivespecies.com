@@ -1,0 +1,73 @@
+<!--#set var="title" value="Canidae"-->
+<!--#set var="header" value="Canidae"-->
+
+<!--#include virtual="/includes/header.html"-->
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/canidae/"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+<style>
+
+    #fig { 
+        width: 900px; 
+        margin: auto;
+    }
+    #slider, #labels {
+        width: 120px;
+        font-size: 11pt;
+        text-align: center;
+        margin: auto;
+    }
+</style>
+<!--#include virtual="/includes/top.html"-->
+<p>This chart visualizes the species breakdown of those who identify as members of the Canidae family within the furry fandom.  It's quite obvious that dogs and wolves are the leaders, with foxes coming in second.  This data is built with live results from the [a][s] <a href="http://survey.adjectivespecies.com/canidae" target="_blank">Canidae Survey</a>. More information about each arc is available when you hover over it.  Due to this graphic utilizing inline SVG, it will not work on Internet Explorer or some versions of the Android mobile browser, our apologies!</p>
+<div id="fig">
+    <script type="text/javascript+protovis">
+var longNames = {
+    'canis-lupus-familiarus-1': 'Domestic dog (canis lupus familiaris) cluster 1 (ancient breed types) - Afghan Hound, Akita Inu, Alaskan Malamute, Basenji, Chow Chow, Irish Wolfhound, Lhasa Apso, Pekingese, Saluki, Samoyed, Shar Pei, Shiba Inu, Shih Tzu, Siberian Husky, Tibetan Terrier',
+    'canis-lupus-familiarus-2': 'Domestic dog (canis lupus familiaris) cluster 2 (mastiff types) - Bernese Mountain Dog, Boxer, Bulldog, Bullmastiff, French Bulldog, Cierny Sery, Greater Swiss Mountain Dog, Labrador Retriever, Mastiff, Miniature Bull Terrier, Newfoundland, Presa Canario, Rottweiler.',
+    'canis-lupus-familiarus-3': 'Domestic dog (canis lupus familiaris) cluster 3 (herding types) - Belgian Sheepdog, German Shepherd Dog, Belgian Tervuren, Borzoi, Collie, Greyhound, Pug, St. Bernard, Shetland Sheepdog.',
+    'canis-lupus-familiarus-4': 'Domestic dog (canis lupus familiaris) cluster 4 (modern/hunting) - Breeds too numerous to list; everything not in the above clusters'
+};
+var vis = new pv.Panel()
+    .width(900)
+    .height(900);
+
+var partition = vis.add(pv.Layout.Partition.Fill)
+    .nodes(pv.dom(data).root("Family: CANIDAE").nodes())
+    .size(function(d) d.nodeValue)
+    .order("descending")
+    .orient("radial");
+
+partition.node.add(pv.Wedge)
+    .fillStyle(pv.Colors.category19().by(function(d) d.parentNode && d.parentNode.nodeName))
+    .strokeStyle("#fff")
+    .lineWidth(.5)
+    .title(function(d) (longNames[d.nodeName] ? longNames[d.nodeName] : d.nodeName) + ' (' + sum(d) + ')');
+
+partition.label.add(pv.Label)
+    .text(function(d) d.nodeName.length > 15 ? d.nodeName.substring(0, 15) + '...' : d.nodeName)
+    .visible(function(d) ((d.nodeValue && d.nodeValue > 2) || (!d.nodeValue && d.angle * d.outerRadius >= 9)));    
+vis.render();
+
+function sum(node) {
+    if (node.nodeValue !== undefined) {
+        return node.nodeValue;
+    }
+    var toReturn = 0;
+    for (var i = 0; i < node.childNodes.length; i++) {
+        toReturn += sum(node.childNodes[i]);
+    }
+    return toReturn;
+}
+
+</script>
+</div>
+<div id="expound">
+</div>
+<hr />
+<h3>Sources</h3>
+<ul>
+    <li>The [adjective][species] Canidae survey: <a href="http://survey.adjectivespecies.com/canidae/" target="_blank">http://survey.adjectivespecies.com/canidae/</a></li>
+</ul>
+<!--#include virtual="/includes/footer.html"-->

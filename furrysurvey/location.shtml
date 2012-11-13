@@ -1,0 +1,29 @@
+<!--#set var="title" value="State of Furry - Location"-->
+<!--#set var="header" value="State of Furry - Location"-->
+<!--#include virtual="/includes/header.html"-->
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <style>
+            #fig {
+                text-align: center;
+            }
+        </style>
+<!--#include virtual="/includes/top.html"-->
+                <p>This data is comprised of two questions: "Where are you located?" (country, and state if in the US), and "How large is the size of your hometown?"</p> 
+                <div id="fig"> 
+                    <p>
+                        <img src="world-raw.png" /><br />
+                        <strong>World Population Distribution</strong> <em>(raw data)</em>
+                    </p>
+                    <p>
+                        <img src="us_pop_dist_corrected.png" /><br />
+                        <strong>US Population Distribution</strong> <em>(partially corrected with size of city)</em>
+                    </p>
+                </div> 
+                <div id="expound"> 
+                    <h2>Population Distribution</h2>
+                    <p>Nothing is too surprising here, but it should be noted that the survey was provided in English, and only online.  These two factors do help to explain some of the skew towards the United States.  While other countries may have large populations of furries, the survey may not have been available in their native languages.</p>
+                </div> 
+                <div id="links">
+                    <a href="selfDescribed.shtml">&laquo; Activities</a> - <a href=".">Home</a>
+                </div>
+<!--#include virtual="/includes/footer.html"-->

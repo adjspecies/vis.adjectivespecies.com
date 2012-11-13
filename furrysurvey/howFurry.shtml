@@ -1,0 +1,139 @@
+<!--#set var="title" value="State of Furry - How furry?"-->
+<!--#set var="header" value="State of Furry - How furry?"-->
+
+<!--#include virtual="/includes/header.html"-->
+        <link rel="stylesheet" type="text/css" href="http://vis.mjs-svc.com/_lib/theme/css/smoothness/jquery-ui-1.8.6.custom.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#slider').slider({
+                    value: 0,
+                    min: 0,
+                    max: 2,
+                    step: 1,
+                    slide: function(ev, ui) {
+                        updateYearByIndex(ui.value);
+                    }
+                });
+            });
+        </script>
+        <style>
+            #fig {
+                width: 400px;
+            }
+        </style>
+<!--#include virtual="/includes/top.html"-->
+                <p>This question asked how strongly respondents considered themselves furry.</p>
+                <div id="fig">
+                    <script type="text/javascript+protovis">
+var n = [pv.sum(pv.values(data[2009].howFurry)), pv.sum(pv.values(data[2010].howFurry))];
+var angle = [pv.Scale.linear(0, n[0]).range(0, 2 * Math.PI), pv.Scale.linear(0, n[1]).range(0, 2 * Math.PI)];
+var ymeans = [0, 0];
+var imeans = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0, 
+    8: 0,
+    9: 0,
+    10: 0
+};
+pv.entries(data[2009].howFurry).forEach(function(d) ymeans[0] += d.key * d.value);
+pv.entries(data[2010].howFurry).forEach(function(d) ymeans[1] += d.key * d.value);
+pv.range(1, 11).forEach(function(d) imeans[d] = (data[2009].howFurry[d] + data[2010].howFurry[d]) / 2);
+n.push(pv.sum(pv.values(imeans)));
+ymeans[0] /= n[0]; ymeans[1] /= n[1];
+var vis = new pv.Panel()
+    .width(400)
+    .height(500);
+
+var donut = vis.add(pv.Panel)
+    .width(400)
+    .height(400)
+.add(pv.Wedge)
+    .left(200)
+    .top(200)
+    .data(pv.entries(data[2009].howFurry))
+    .innerRadius(75)
+    .outerRadius(125)
+    .angle(function(d) angle[0](d.value))
+    .fillStyle(function(d) "hsl(" + (360 * (parseInt(d.key) / 10)) + ", 50%, 50%)")
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .cursor("crosshair")
+    .title(function(d) "About " + d.key + "0% furry (" + d.value + " respondents)")
+.anchor("start").add(pv.Label)
+    .text(function(d) parseInt(d.key));
+donut.add(pv.Wedge)
+    .left(200)
+    .top(200)
+    .data(pv.entries(data[2010].howFurry))
+    .innerRadius(150)
+    .outerRadius(200)
+    .angle(function(d) angle[1](d.value))
+    .fillStyle(function(d) "hsl(" + (360 * (parseInt(d.key) / 10)) + ", 50%, 50%)")
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .cursor("crosshair")
+    .title(function(d) "About " + d.key + "0% furry (" + d.value + " respondents)")
+.anchor("start").add(pv.Label)
+    .text(function(d) parseInt(d.key));
+vis.add(pv.Label)
+    .left(200)
+    .top(140)
+    .textAlign("center")
+    .font("normal 10pt sans-serif")
+    .text("2009");
+vis.add(pv.Label)
+    .left(200)
+    .top(70)
+    .textAlign("center")
+    .font("normal 10pt sans-serif")
+    .text("2010");
+vis.add(pv.Label)
+    .left(10)
+    .bottom(70)
+    .font("bold 10pt sans-serif")
+    .text("Trend (mean of 2009 and 2010)");
+vis.add(pv.Label)
+    .left(20)
+    .bottom(60)
+    .text("2009 mean furriness: " + ymeans[0].toFixed(1));
+vis.add(pv.Label)
+    .left(20)
+    .bottom(50)
+    .text("2010 mean furriness: " + ymeans[1].toFixed(1));
+var trend = vis.add(pv.Line)
+    .data(pv.entries(imeans))
+    .left(function() this.index * 30 + 60)
+    .bottom(function(d) 5 + (d.value / n[2] * 200))
+    .interpolate("cardinal");
+trend.anchor("right").add(pv.Label)
+    .text("More furry")
+    .visible(function() this.index == 9);
+trend.anchor("left").add(pv.Label)
+    .text("Less furry")
+    .visible(function() this.index == 0);
+trend.anchor("center").add(pv.Label)
+    .text("# of respondents")
+    .textBaseline("bottom")
+    .textAngle(-Math.PI / 32)
+    .visible(function() this.index == 4);
+vis.render();
+                    </script>
+                </div>
+                <div id="expound">
+                    <h2>How Furry</h2>
+                    <p>It appears that the average fur considers himself to be about 66% furry.  This question asks the respondent how strongly they consider themselves part of the furry fandom, meaning that most furs seem to see it as around an importance level of 6-8; this, on a scale of 1-10, with 1 being not very important and 10 being, quote, "bark[ing] at the mailman".  Few who see furry as very important to themselves are willing to go with just 9 and tend to answer 10 instead.  There is, of course a long tail leading up to the peak of respondents who deem furry to be less important to themselves.</p>
+                </div>
+                <div id="links">
+                    <a href="orientation.shtml">&laquo; Sexual Orientation</a> - <a href=".">Home</a> - <a href="religion.shtml">Religion &raquo;</a>
+                </div>
+<!--#include virtual="/includes/footer.html"-->

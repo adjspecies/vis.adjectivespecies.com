@@ -1,0 +1,27 @@
+<!--#set var="title" value="Sex and Gender"-->
+<!--#set var="header" value="Sex and Gender"-->
+
+<!--#include virtual="/includes/header.html"-->
+<script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/sexuality-and-gender/"></script>
+<style>
+    .fig {
+        margin: 0 auto;
+        text-align: center;
+    }
+    path {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    text {
+        text-anchor: middle;
+        dominant-baseline: central;
+        font-size: 15pt;
+    }
+</style>
+<!--#include virtual="/includes/top.html"-->
+<div class="fig" id="sexuality"><h3>Sexual Orientation</h3></div>
+<div class="fig" id="gender"><h3>Gender Identity</h3></div>
+<div class="fig" id="biosex"><h3>Biological Sex</h3></div>
+<script type="text/javascript" src="sexgender.js"></script>
+<!--#include virtual="/includes/footer.html"-->
