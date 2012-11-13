@@ -65,5 +65,6 @@
         <br clear="all" />
         <div id="expound">
             <p>This graph shows the popularity of species over time, as shown by number of years that the respondent has been a member of the furry fandom.  You may highlight a particular species by hovering over the species name below the visualization, or you may see which species a particular line belongs to by hovering over the line within the chart.  </p>
+            <p>You may also find the visualization showing year-to-year changes within each species <a href="yty">here</a>.</p>
         </div>
 <!--#include virtual="/includes/footer.html"-->
