@@ -1,8 +1,9 @@
 <html>
     <head>
         <title>FurAffinity Stats Visualizer</title>
-        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://assets.adjectivespecies.com/bootstrap/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="/base.css" />
+        <link rel="icon" type="image/png" href="http://assets.adjectivespecies.com/favicon.png" />
         <link rel="stylesheet" type="text/css" href="http://vis.mjs-svc.com/_lib/theme/css/smoothness/jquery-ui-1.8.6.custom.css" />
         <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
         <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
@@ -34,7 +35,7 @@ if (isset($_GET['user'])) {
             </div>
         </div>
         <header>
-            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
+            <a href="http://adjectivespecies.com"><img src="http://assets.adjectivespecies.com/as-header.png" /></a>
         </header>
 <?
 if ($user) {
