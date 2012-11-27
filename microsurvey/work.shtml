@@ -1,33 +1,30 @@
-<html>
-    <head>
-        <title>Microsurvey Results</title>
-        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="/base.css" />
-        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
-        <script type="text/javascript" src="http://klisoura.com/microsurvey_build_vars.php"></script>
-    </head>
-    <body>
-        <div class="topbar">
-            <div class="topbar-inner">
-                <div class="container-fluid">
-                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
-                    <ul class="nav">
-                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
-                        <li class="active"><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
-                        <li><a href="http://forums.adjectivespecies.com">Forums</a></li>
-                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
-                        <li><a href="http://furaffinity.net/user/adjspecies">FurAffinity</a></li>
-                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <header>
-            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
-        </header>
-        <article>
-            <h1>Microsurvey Results</h1>
-            <section>
+<!DOCTYPE html>
+<!--
+    http://vis.adjectivespecies.com - visualizations of the furry fandom.
+    Copyright (C) 2012  Matthew Scott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--#set var="title" value="Microsurvey Results"-->
+<!--#set var="header" value="Microsurvey Results"-->
+
+<!--#include virtual="/includes/header.html"-->
+<script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+<script type="text/javascript" src="http://klisoura.com/microsurvey_build_vars.php"></script>
+<!--#include virtual="/includes/top.html"-->
+
                 <p>Here are the live results from the psychographic microsurvey that offered in tandem with the full <a href="../furrysurvey">Furry Survey</a>.  The answers to the questions from this survey were used to conduct additional research into some potential shared psychological traits of the members of the furry fandom.  Questions were provided as statements and answered on a six-level scale from "Strongly Disagree" to "Strongly Agree"  Below, you can see the general outcome of the results and explore correlations between the answers to those questions.</p>
                 <p>Hover over the bars to see the full question text</p>
                 <div id="fig" style="margin:auto">
@@ -103,10 +100,4 @@ vis.add(pv.Label)
 vis.render();
                     </script>
                 </div>
-            </section>
-        </article>
-        <footer>
-            <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license
-        </footer>
-    </body>
-</html>
+<!--#include virtual="/includes/footer.html"-->

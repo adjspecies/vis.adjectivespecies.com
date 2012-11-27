@@ -1,8 +1,26 @@
-<html>
-    <head>
-        <title>State of Furry Extras - Species</title>
-        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="/base.css" />
+<!DOCTYPE html>
+<!--
+    http://vis.adjectivespecies.com - visualizations of the furry fandom.
+    Copyright (C) 2012  Matthew Scott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--#set var="title" value="State of Furry Extras"-->
+<!--#set var="header" value="State of Furry Extras"-->
+
+<!--#include virtual="/includes/header.html"-->
         <link rel="stylesheet" type="text/css" href="../style.css" />
         <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
         <script type="text/javascript" src="species.js"></script>
@@ -20,29 +38,7 @@
                 vertical-align: bottom;
             }
         </style>
-    </head>
-    <body>
-        <div class="topbar">
-            <div class="topbar-inner">
-                <div class="container-fluid">
-                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
-                    <ul class="nav">
-                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
-                        <li class="active"><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
-                        <li><a href="http://forums.adjectivespecies.com">Forums</a></li>
-                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
-                        <li><a href="http://furaffinity.net/user/adjspecies">FurAffinity</a></li>
-                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <header>
-            <a href="http://adjectivespecies.com"><img src="/as-header.png" /></a>
-        </header>
-        <article>
-            <h1>The State of Furry Extras</h1>
-            <section>
+<!--#include virtual="/includes/top.html"-->
                 <p>Along with data from the Furry Survey, I may occasionally wind up doing an extra visualization or two based on informal data from other locations, such as polls in forums or whatnot.  This data may only show trends and should not be taken to be the gospel truth!  Have fun with it, though!</p>
                 <table>
                     <tr>
@@ -54,7 +50,7 @@ var angle = pv.Scale.linear(0, n).range(0, 2 * Math.PI);
 var species = new pv.Panel()
     .width(200)
     .height(200)
-    .event("click", function() window.location = "species.html")
+    .event("click", function() window.location = "species.shtml")
 .add(pv.Wedge)
     .data(pv.entries(speciesData))
     .top(100)
@@ -70,10 +66,10 @@ var species = new pv.Panel()
 species.render();
                                 </script>
                             </div>
-                            <a href="species.html">Species</a>
+                            <a href="species.shtml">Species</a>
                         </td>
                         <td>
-                            <a href="states.html">
+                            <a href="states.shtml">
                                 <div class="fig">
                                     <img src="states.png" />
                                 </div>
@@ -84,10 +80,4 @@ species.render();
                     </tr>
                 </table>
                 <div id="links"><a href="..">Back to Furry Survey visualizations</a></div>
-            </section>
-        </article>
-        <footer>
-            <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license
-        </footer>
-    </body>
-</html>
+<!--#include virtual="/includes/footer.html"-->

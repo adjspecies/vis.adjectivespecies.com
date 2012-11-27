@@ -1,3 +1,8 @@
+/*
+   The following data was provided from the Furry Survey under the Creative
+   Commons license.
+*/
+
 var data = {
     2008: {
         n: 7023,

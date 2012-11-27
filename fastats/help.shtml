@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<!--
+    http://vis.adjectivespecies.com - visualizations of the furry fandom.
+    Copyright (C) 2012  Matthew Scott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
 <!--#set var="title" value="FA Stats Visualizer Help"-->
 <!--#set var="header" value="FA Stats Visualizer Help"-->
 
@@ -14,7 +33,7 @@
         <dt>Does that mean anyone can view the stats I visualize in this tool?  What if I don't want others to see my lousy/great/normal statistics?</dt>
         <dd>Yes, everyone will be able to view your statistics, though no private date will be displayed (no private data can be accessed, for that matter).  All data collected from stats is visible on each submissions page, anyway.  If you don't want others to view your stats, you probably shouldn't use this tool!</dd>
         <dt>I want to use this tool for myself!</dt>
-        <dd>You are welcome to!  It's provided under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA license</a> - that means you can use it for non-commercial purposes, so long as you attribute it to me and share it under the same license.  If you want more info about the license* or help in setting it up, please feel free to <a href="mailto:mjs+fastats@mjs-svc.com">shoot me an email</a> with your questions, comments, or concerns!</dd>
+        <dd>You are welcome to!  The content is provided under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA license</a> - that means you can use it for non-commercial purposes, so long as you attribute it and share it under the same license - and the code is available under the (similar) <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero GPL v3 license</a>.  If you want more info about the license* or help in setting it up, please feel free to <a href="mailto:makyo+fastats@adjectivespecies.com">shoot me an email</a> with your questions, comments, or concerns!</dd>
         <dt>What is the "Rating/Type" display?</dt>
         <dd>This display shows the rating with the color of the bar, the type of the submission above the bar, and the relative popularity with the height of the bar.</dd>
         <dt><em>Jinggo78 asks:</em> What kind of color graph is in the middle? I'm not sure I understand it. Is popularity higher with more views and comments?</dt>
