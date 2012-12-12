@@ -40,6 +40,7 @@
     }
 </style>
 <!--#include virtual="/includes/top.html"-->
+<p>The data for these charts and the list below comes from the [adjective][species] <a href="http://survey.adjectivespecies.com/monogamy-polygamy">survey on monogamy and polygamy</a>.  There appears to be an expectation that furries will date and enter into relationships within the fandom, a relatively close-knit social group where many of the individuals share several interests in common. The intent of this survey is to judge the prevalence of monogamy and polygamy - that is, relationships that involve two, or relationships that involve more than two individuals - within the furry subculture. It asks questions regarding both mono- and poly-sexuality, and mono- and poly-romanticism in order to explore this topic.</p>
 <div class="fig" id="relationship"><h3>Relationship Status</h3></div>
 <div class="fig" id="romantic"><h3>Romantic Status</h3></div>
 <div class="fig" id="sexual"><h3>Sexual Status</h3></div>
