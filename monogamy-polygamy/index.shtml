@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+    http://vis.adjectivespecies.com - visualizations of the furry fandom.
+    Copyright (C) 2012  Matthew Scott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--#set var="title" value="Sex and Gender"-->
+<!--#set var="header" value="Sex and Gender"-->
+
+<!--#include virtual="/includes/header.html"-->
+<script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/monogamy-polygamy/"></script>
+<style>
+    .fig {
+        margin: 5px;
+        text-align: center;
+        float: left;
+    }
+    path {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    text {
+        text-anchor: middle;
+        dominant-baseline: central;
+        font-size: 15pt;
+    }
+</style>
+<!--#include virtual="/includes/top.html"-->
+<div class="fig" id="relationship"><h3>Relationship Status</h3></div>
+<div class="fig" id="romantic"><h3>Romantic Status</h3></div>
+<div class="fig" id="sexual"><h3>Sexual Status</h3></div>
+<br clear="all" />
+<div id="addlComments"><h3>Additional Comments</h3></div>
+<script type="text/javascript" src="monopoly.js"></script>
+<!--#include virtual="/includes/footer.html"-->
