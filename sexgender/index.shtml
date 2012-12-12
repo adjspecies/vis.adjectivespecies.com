@@ -21,7 +21,6 @@
 <!--#set var="header" value="Sex and Gender"-->
 
 <!--#include virtual="/includes/header.html"-->
-<p>The data for these charts and the list below comes from the [adjective][species] <a href="http://survey.adjectivespecies.com/sexuality-and-gender">survey on gender and sexuality</a>.  The perceived sexual focus of the fandom aside, sexual orientation and gender identity play an undeniably large role within furry. The freedom associated both with the anonymity of being on the internet and the process of living vicariously through a constructed persona allow a great deal deal of room for expression and exploration, perhaps beyond what we would do or is even possible outside our subculture.</p>
 <script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
 <script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/sexuality-and-gender/"></script>
 <style>
@@ -40,6 +39,7 @@
     }
 </style>
 <!--#include virtual="/includes/top.html"-->
+<p>The data for these charts and the list below comes from the [adjective][species] <a href="http://survey.adjectivespecies.com/sexuality-and-gender">survey on gender and sexuality</a>.  The perceived sexual focus of the fandom aside, sexual orientation and gender identity play an undeniably large role within furry. The freedom associated both with the anonymity of being on the internet and the process of living vicariously through a constructed persona allow a great deal deal of room for expression and exploration, perhaps beyond what we would do or is even possible outside our subculture.</p>
 <div class="fig" id="sexuality"><h3>Sexual Orientation</h3></div>
 <div class="fig" id="gender"><h3>Gender Identity</h3></div>
 <div class="fig" id="biosex"><h3>Biological Sex</h3></div>
