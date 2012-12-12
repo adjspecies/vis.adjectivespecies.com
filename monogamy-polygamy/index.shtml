@@ -17,8 +17,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<!--#set var="title" value="Sex and Gender"-->
-<!--#set var="header" value="Sex and Gender"-->
+<!--#set var="title" value="Monogamy and Polygamy"-->
+<!--#set var="header" value="Monogamy and Polygamy"-->
 
 <!--#include virtual="/includes/header.html"-->
 <script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
