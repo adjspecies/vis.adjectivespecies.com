@@ -42,17 +42,31 @@ function buildChart(selector, key1, key2) {
             .attr('width', 300)
             .attr('height', 300)
             .append('g')
-            .attr('transform', 'translate(150,150)');
+            .attr('transform', 'translate(150,150)'),
+        path = vis.selectAll('g.path')
+            .data(layout(d3.entries(data[key1][key2])))
+            .enter().append('g')
+            .attr('class', 'path');
 
-    vis.selectAll('path')
-        .data(layout(d3.entries(data[key1][key2])))
-        .enter().append('path')
+    path.append('path')
         .attr('d', arc)
         .attr('fill-rule', 'evenodd')
         .attr('style', function(d) {
             return 'fill:' + colors(d.data.key);
+        });
+
+    path.append('text')
+        .attr('class', 'arc-label')
+        .attr('transform', function(d) { 
+            var angle = (d.startAngle + d.endAngle) / 2;
+            angle = angle > Math.PI ? 
+                angle * 180 / Math.PI + 90 :
+                angle * 180 / Math.PI - 90;
+            return 'translate(' + arc.centroid(d) + ') rotate(' + angle + ')'; 
         })
-        .append('title')
+        .text(function(d) { return d.data.key.replace('_', ' ').replace(/(sexual|amorous|gamous)/, ''); });
+
+    path.append('title')
         .text(function(d) {
             return (translatedAnswers[d.data.key] ? translatedAnswers[d.data.key] : d.data.key) +
                 ' (' + Math.round(d.data.value / n * 100) + '%)'; 

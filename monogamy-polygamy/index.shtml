@@ -38,6 +38,9 @@
         dominant-baseline: central;
         font-size: 15pt;
     }
+    .arc-label {
+        font-size: 10pt;
+    }
     #addlComments {
         display: none;
     }
