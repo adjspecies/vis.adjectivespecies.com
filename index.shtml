@@ -4,7 +4,7 @@
 <!--#include virtual="/includes/header.html"-->
 <!--#include virtual="/includes/top.html"-->
 <div style="float:right;position:relative;text-align:right;margin-top:-1em;margin-right:-1em;">
-<a href="https://github.com/makyo/vis.adjectivespecies.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/adjspecies/vis.adjectivespecies.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </div>
 <ul>
     <li><a href="fastats">FurAffinity.net Submission Statistics</a> - See how your submissions stack up against each other!</li>
