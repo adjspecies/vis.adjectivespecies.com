@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+    http://vis.adjectivespecies.com - visualizations of the furry fandom.
+    Copyright (C) 2012  Matthew Scott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--#set var="title" value="On Giving"-->
+<!--#set var="header" value="On Giving"-->
+
+<!--#include virtual="/includes/header.html"-->
+<script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/sexuality-and-gender/"></script>
+<style>
+    .fig {
+        margin: 0 auto;
+        text-align: center;
+    }
+    path {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    text {
+        text-anchor: middle;
+        dominant-baseline: central;
+        font-size: 15pt;
+    }
+</style>
+<!--#include virtual="/includes/top.html"-->
+<!--#include virtual="/includes/footer.html"-->
