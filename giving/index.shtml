@@ -22,21 +22,47 @@
 
 <!--#include virtual="/includes/header.html"-->
 <script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
-<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/sexuality-and-gender/"></script>
+<script type="text/javascript" src="data.js"></script>
 <style>
     .fig {
         margin: 0 auto;
+        padding-bottom: 2em;
+        padding-top: 0.5em;
+        border-top: 1px solid lightgray;
         text-align: center;
     }
-    path {
-        stroke: #fff;
-        stroke-width: 1px;
+    .attendance,
+    .attendance circle {
+        font: 10pt sans-serif;
+        font-weight: normal;
+        fill: none;
+        stroke: gray;
+        stroke-width: 2px;
+    }
+    .donations,
+    .donations circle {
+        fill: none;
+        stroke: green;
+        stroke-width: 2px;
+    }
+    .avgDonationPerAttendee,
+    .avgDonationPerAttendee circle {
+        fill: none;
+        stroke: blue;
+        stroke-width: 2px;
+    }
+    circle {
+        fill: white !important;
     }
     text {
-        text-anchor: middle;
-        dominant-baseline: central;
-        font-size: 15pt;
+        stroke: none !important;
+        fill: black;
+        dominant-baseline: middle;
     }
 </style>
 <!--#include virtual="/includes/top.html"-->
+<p>These draft charts, with data collected from wikifur, were intended to explore whether the average amount donated per attendee increased with con attendance.  This trend wasn't visible, as, on further research, more than just attendee donations goes toward the final charity donation amount.  For more information on furries and giving, check out the <a href="http://adjectivespecies.com/2012/12/19/on-giving/">article</a>.
+<div id="vis"></div>
+<script type="text/javascript" src="giving.js"></script>
+<p><strong>Source:</strong> Wikifur (with a <a href="https://twitter.com/SmackJackal/status/280471998822502401" target="_blank">correction</a> on the 2011 number for Further Confusion from the con chair)</p>
 <!--#include virtual="/includes/footer.html"-->

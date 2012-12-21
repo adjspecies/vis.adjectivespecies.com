@@ -167,7 +167,7 @@ var data = [
         year: 2011,
         attendance: 2801,
         //charityName: "Toonseum",
-        charityAmount: 8000 //XXX
+        charityAmount: 10000 //XXX
       },
       { 
         year: 2012,

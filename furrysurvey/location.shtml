@@ -27,7 +27,7 @@
             }
         </style>
 <!--#include virtual="/includes/top.html"-->
-                <p>This data is comprised of two questions: "Where are you located?" (country, and state if in the US), and "How large is the size of your hometown?"</p> 
+                <p>This data is comprised of two questions: "Where are you located?" (country, and state if in the US), and "How large is the size of your hometown?" NOTE: given the limited distribution of the survey, these maps should be taken as maps of the location of the respondents to the survey, rather than maps showing the density of furries in general.</p> 
                 <div id="fig"> 
                     <p>
                         <img src="world-raw.png" /><br />
