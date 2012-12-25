@@ -50,7 +50,7 @@ gAttendance.selectAll('circle')
     .data(function(d) { 
         y.domain([0, d3.max(d.years, function(i) { return i.attendance; })]);
         return d.years.map(function(i) {
-            return {x: x(i.year), y: y(i.attendance) / 2};
+            return {x: x(i.year), y: y(i.attendance) / 2, amount: i.attendance};
         }); 
     })
     .enter().append('circle')
@@ -60,7 +60,9 @@ gAttendance.selectAll('circle')
     .attr('cy', function(d) {
         return d.y;
     })
-    .attr('r', 3);
+    .attr('r', 3)
+    .append('title')
+    .text(function(d) { return d.amount + ' attendees'; });
 
 gDonations = vis.append('g')
     .attr('class', 'donations')
@@ -83,7 +85,7 @@ gDonations.selectAll('circle')
     .data(function(d) { 
         y.domain([0, d3.max(d.years, function(i) { return i.charityAmount; })]);
         return d.years.map(function(i) {
-            return {x: x(i.year), y: y(i.charityAmount) / 2};
+            return {x: x(i.year), y: y(i.charityAmount) / 2, amount: i.charityAmount};
         }); 
     })
     .enter().append('circle')
@@ -93,7 +95,9 @@ gDonations.selectAll('circle')
     .attr('cy', function(d) {
         return d.y;
     })
-    .attr('r', 3);
+    .attr('r', 3)
+    .append('title')
+    .text(function(d) { return '$' + d.amount.toFixed(2); });
 
 gAvg = vis.append('g')
     .attr('class', 'avgDonationPerAttendee')
@@ -109,9 +113,32 @@ gAvg.append('text')
     .text('Average donation per attendee');
 gAvg.append('text')
     .attr('x', 200)
-    .attr('y', 250)
+    .attr('y', 260)
     .attr('text-anchor', 'middle')
     .text('Time');
+gAvg.append('text')
+    .attr('x', 0)
+    .attr('y', 260)
+    .attr('text-anchor', 'start')
+    .text('1999');
+gAvg.append('text')
+    .attr('x', 400)
+    .attr('y', 260)
+    .attr('text-anchor', 'end')
+    .text('2012');
+gAvg.append('line')
+    .attr('x1', 0)
+    .attr('x2', 0)
+    .attr('y1', 10)
+    .attr('y2', 250)
+    .attr('class', 'axisLine');
+gAvg.append('line')
+    .attr('x1', 0)
+    .attr('x2', 400)
+    .attr('y1', 250)
+    .attr('y2', 250)
+    .attr('class', 'axisLine');
+
 gAvg.append('path')
     .attr('d', function(d) {
         y.domain([0, d3.max(d.years, function(i) { return i.charityAmount / i.attendance; })]);
@@ -121,7 +148,11 @@ gAvg.selectAll('circle')
     .data(function(d) { 
         y.domain([0, d3.max(d.years, function(i) { return i.charityAmount / i.attendance; })]);
         return d.years.map(function(i) {
-            return {x: x(i.year), y: y((i.charityAmount / i.attendance) * 0.8)};
+            return {
+                x: x(i.year), 
+                y: y((i.charityAmount / i.attendance) * 0.8),
+                amount: i.charityAmount / i.attendance
+            };
         }); 
     })
     .enter().append('circle')
@@ -131,4 +162,6 @@ gAvg.selectAll('circle')
     .attr('cy', function(d) {
         return d.y;
     })
-    .attr('r', 3);
+    .attr('r', 3)
+    .append('title')
+    .text(function(d) { return '$' + d.amount.toFixed(2) + ' per attendee'; });

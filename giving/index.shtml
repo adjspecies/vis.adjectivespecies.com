@@ -51,8 +51,15 @@
         stroke: blue;
         stroke-width: 2px;
     }
+    .axisLine {
+        fill: none;
+        color: black;
+        stroke: black;
+        stroke-width: 1px !important;
+    }
     circle {
         fill: white !important;
+        cursor: crosshair;
     }
     text {
         stroke: none !important;

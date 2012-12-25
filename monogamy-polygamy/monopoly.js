@@ -89,9 +89,22 @@ for (var k1 in data) {
     }
 }
 
+data['Kinsey Data'] = {
+    'Q. 1a. Would you say you have ever been in a polyamorous relationship?': {
+        Yes: 852,
+        No: 119
+    }
+};
+
 buildChart('#relationship', 'About You', 'Relationship Status');
 buildChart('#romantic', 'About You', 'Romantic Status');
 buildChart('#sexual', 'About You', 'Sexual Status');
+/*d3.select('#ki')
+    .append('p')
+    .append('strong')
+    .text('Q. 1a. Would you say you have ever been in a polyamorous relationship?');
+buildChart('#ki', 'Kinsey Data', 
+        'Q. 1a. Would you say you have ever been in a polyamorous relationship?');*/
 
 var addlComments = d3.select('#addlComments')
     .append('ul');
