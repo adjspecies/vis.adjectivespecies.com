@@ -17,17 +17,23 @@
 */
 
 // Initialize variables.
-var offsets = [],
-    scaleOffsets = [],
-    filter = [], filteredCount = 0;
-for (var i = 0; i < 32; i++) {
+var offsets = [], scaleOffsets = [],
+    filter = [], agg = [], filteredCount = 0;
+for (var i = 0; i < schema.length - 1; i++) {
     offsets.push([0, 0, 0, 0, 0, 0]);
     scaleOffsets.push([0, 0, 0, 0, 0, 0]);
 }
 
 // Filter out empty responses.
 var data = responses.filter(function(d) {
-    return !isNaN(parseInt(d[3]));
+    var valid = true;
+    for (var i = 3; i < d.length; i++) {
+        if (!d[i]) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 });
 
 // Build a list of offsets - each answer's offset is the sum of the answers
@@ -47,7 +53,7 @@ var vis = d3.select('#fig')
     .attr('transform', 'translate(96,25)');
 
 // Scales for placing data proportionally across the SVG.
-var x = d3.scale.linear().range([0, 1500]).domain([0, 31]),
+var x = d3.scale.linear().range([0, 1500]).domain([0, schema.length - 2]),
     y = d3.scale.linear().range([0, 900]).domain([0, data.length - 1]);
 
 // Build the response lines.
@@ -122,10 +128,13 @@ bars.selectAll('.answer')
             bar.classed('filtered', true);
             filter.push([d.x, d.value]);
         }
+        aggregateFilter();
         updateFilteredPaths();
     })
     .append('title')
-    .text(function(d) { return schema[d.x]; });
+    .text(function(d) { 
+        return schema[d.x + 1]; 
+    });
 
 // Add X-axis labels.
 var labels = vis.append('g');
@@ -167,6 +176,10 @@ var corr = labels.append('text')
     .text('Percentage of respondents (as compared to average): ')
     .append('tspan');
 
+labels.append('text')
+    .attr('x', 0)
+    .attr('y', -10)
+    .text('n = ' + data.length);
 /*
  * Update the opacity of the response lines according to the current filter.
  * Additionally, update the percentage of respondents text at the top.
@@ -179,7 +192,7 @@ function updateFilteredPaths() {
         .classed('filtered', true);
 
     if (filteredCount > 0) {
-        var avg = responses.length / 6;
+        var avg = responses.length / 6 * d3.max(agg.map(function(d) { return d ? d.length : 0; }));
         corr.text(
             d3.format('.4%')(filteredCount / responses.length) + ' (' +
             d3.format('+.4%')((filteredCount - avg) / responses.length)  + ')'
@@ -195,8 +208,7 @@ function updateFilteredPaths() {
  */
 function filterResponse(d) {
     var passes = filter.length > 0,
-        testVal = d.slice(3),
-        agg = aggregateFilter();
+        testVal = d.slice(3);
 
     for (var i = 0; i < agg.length; i++ ) {
         if (agg[i]) {
@@ -223,12 +235,11 @@ function filterResponse(d) {
  * question, and the value is an array of answers.
  */
 function aggregateFilter() {
-    var agg = [];
+    agg = [];
     for (var i = 0; i < filter.length; i++) {
         if (!agg[filter[i][0]]) {
             agg[filter[i][0]] = [];
         }
         agg[filter[i][0]].push(filter[i][1]);
     }
-    return agg;
 }
