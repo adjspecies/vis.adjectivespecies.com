@@ -51,7 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['user'] && $_POST['data'] && 
         preg_match('/' . $_POST['user'] . '/', $_POST['data'])) {
     // save data
     $filename = preg_replace("/^\W*/", "", $_POST['user']);
-    $handle = fopen("raw/{$filename}", (isset($_POST['append']) && $_POST['append'] == "checked" ? 'a' : 'w'));
+    $urltest = @fopen("http://furaffinity.net/user/" . $filename, "r");
+    $handle = null;
+    if ($urltest) {
+        $handle = fopen("raw/{$filename}", (isset($_POST['append']) && $_POST['append'] == "checked" ? 'a' : 'w'));
+    }
     if ($handle) {
         fwrite($handle, $_POST['data']);
         fclose($handle);
