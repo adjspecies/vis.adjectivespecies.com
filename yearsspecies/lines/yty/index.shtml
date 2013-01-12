@@ -22,15 +22,18 @@
 
 <!--#include virtual="/includes/header.html"-->
         <script src="http://d3js.org/d3.v2.js"></script>
-        <script src="area.js"></script>
+        <script src="yearsSpecies.js"></script>
         <style>
-            .speciesArea {
-                stroke: white;
-                stroke-width: 1px;
+            .speciesLine {
+                stroke: rgba(127, 127, 127, 0.5);
+                fill: none;
                 cursor: crosshair;
             }
             .highlightLine {
-                stroke: black;
+                stroke: rgba(0, 0, 0, 1);
+                stroke-width: 2px;
+                fill: none;
+                cursor: crosshair;
             }
             .axis {
                 stroke: rgba(0, 0, 0, 1);
@@ -80,6 +83,6 @@
         </div>
         <br clear="all" />
         <div id="expound">
-            <p>This graph shows the popularity of species over time, as shown by number of years that the respondent has been a member of the furry fandom.  You may highlight a particular species by hovering over the species name below the visualization, or you may see which species a particular area belongs to by hovering over the area within the chart.  </p>
+            <p>This graph shows the popularity of species over time by aggregating each species' year-to-year growth through responses from the furry survey, asking what species a respondent was as well as how many years they've been a part of the furry fandom.  You may highlight a particular species by hovering over the species name below the visualization, or you may see which species a particular line belongs to by hovering over the line within the chart.  </p>
         </div>
 <!--#include virtual="/includes/footer.html"-->
