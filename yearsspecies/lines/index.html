@@ -1,0 +1,68 @@
+---
+layout: default
+title: Years in the Fandom vs. Species
+---
+        <script src="http://d3js.org/d3.v2.js"></script>
+        <script src="yearsSpecies.js"></script>
+        <style>
+            .speciesLine {
+                stroke: rgba(127, 127, 127, 0.5);
+                fill: none;
+                cursor: crosshair;
+            }
+            .highlightLine {
+                stroke: rgba(0, 0, 0, 1);
+                stroke-width: 2px;
+                fill: none;
+                cursor: crosshair;
+            }
+            .axis {
+                stroke: rgba(0, 0, 0, 1);
+                color: #000 !important;;
+                stroke-width: 1px;
+                fill: none;
+            }
+            .xAxisLabel {
+                font-style: italic;
+            }
+            #speciesList, #fig {
+                width: 800px;
+                margin: 0 auto;
+            }
+            #fig {
+                padding-bottom: 1em;
+            }
+            #speciesList div {
+                padding: 2px;
+                margin: 0 5px 5px 0;
+                float: left;
+                cursor: crosshair;
+            }
+            .speciesDiv {
+                border: 1px solid #999;
+            }
+            .highlightDiv {
+                border: 1px solid #000;
+                background-color: #999;
+            }
+            #visWrapper {
+                text-align: center;
+                margin: 0 auto;
+                position: relative;
+                clear: both;
+            }
+            #expound {
+                background-color: #eef;
+                border-top: 1px dotted #88a;
+                padding: 10px;
+            }
+        </style>
+        <div id="visWrapper">
+            <div id="fig"></div>
+            <div id="speciesList"></div>
+        </div>
+        <br clear="all" />
+        <div id="expound">
+            <p>This graph shows the popularity of species over time, as shown by number of years that the respondent has been a member of the furry fandom.  You may highlight a particular species by hovering over the species name below the visualization, or you may see which species a particular line belongs to by hovering over the line within the chart.  </p>
+            <p>You may also find the visualization showing year-to-year changes within each species <a href="yty">here</a>.</p>
+        </div>

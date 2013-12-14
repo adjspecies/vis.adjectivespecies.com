@@ -1,0 +1,48 @@
+---
+layout: default
+title: "State of Furry: Years in the Fandom"
+---
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <style>
+            #fig {
+                width: 400px;
+            }
+        </style>
+                <p>This question asked respondents how long they'd been a part of the fandom.  Data is only available from 2008.</p>
+                <div id="fig">
+                    <script type="text/javascript+protovis">
+var n = pv.sum(pv.values(data[2008].yearsInFurry));
+var vis = new pv.Panel()
+    .width(400)
+    .height(100)
+    .bottom(100)
+.add(pv.Bar)
+    .data(pv.entries(data[2008].yearsInFurry))
+    .bottom(0)
+    .left(function() this.index * Math.floor(400 / 7) + 5)
+    .height(function(d) d.value / n * 300)
+    .width(Math.floor(400 / 8))
+    .fillStyle(function(d) "hsl(" + (360 * (d.value / n)) + ", 50%, 50%)")
+    .title(function(d) d.value)
+    .cursor("crosshair")
+.anchor("bottom").add(pv.Label)
+    .textAngle(-Math.PI / 2)
+    .textBaseline("middle")
+    .textAlign("right")
+    .text(function(d) d.key);
+vis.add(pv.Rule)
+    .bottom(0)
+    .left(0)
+    .width(400);
+vis.render();
+                    </script>
+                </div>
+                <div id="expound">
+                    <h2>Years in the Fandom</h2>
+                    <p>It seems that most of the fandom has only been around for 3-10 years.  This could be from one of two things: furry could've gotten very popular 3-10 years ago, or members grow out of the community after that period of time.  A question for another survey of ex-furries, perhaps.</p>
+                </div>
+                <div id="links">
+                    <a href="age.html">&laquo; Age</a> - <a href=".">Home</a> - <a href="sexGender.html">Sex and Gender &raquo;</a>
+                </div>

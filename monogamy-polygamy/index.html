@@ -1,0 +1,40 @@
+---
+layout: default
+title: Monogamy and Polygamy
+---
+<script type="text/javascript" src="http://lib.jnsq.us/d3/v2"></script>
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/jsonResults/monogamy-polygamy/"></script>
+<style>
+    .fig {
+        margin: 5px;
+        text-align: center;
+        float: left;
+    }
+    path {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    text {
+        text-anchor: middle;
+        dominant-baseline: central;
+        font-size: 15pt;
+    }
+    .arc-label {
+        font-size: 10pt;
+    }
+    #addlComments {
+        display: none;
+    }
+</style>
+<p>The data for these charts and the list below comes from the [adjective][species] <a href="http://survey.adjectivespecies.com/monogamy-polygamy">survey on monogamy and polygamy</a>.  There appears to be an expectation that furries will date and enter into relationships within the fandom, a relatively close-knit social group where many of the individuals share several interests in common. The intent of this survey is to judge the prevalence of monogamy and polygamy - that is, relationships that involve two, or relationships that involve more than two individuals - within the furry subculture. It asks questions regarding both mono- and poly-sexuality, and mono- and poly-romanticism in order to explore this topic.</p>
+<div class="fig" id="relationship"><h3>Relationship Status</h3></div>
+<div class="fig" id="romantic"><h3>Romantic Status</h3></div>
+<div class="fig" id="sexual"><h3>Sexual Status</h3></div>
+<br clear="all" />
+<!--<div id="ki" style="text-align: center">
+    <h3>Kinsey Institute data</h3>
+    <p>Source: <a href="http://www.kinseyinstitute.org/resources/Polyamory.pdf">http://www.kinseyinstitute.org/resources/Polyamory.pdf</a></p>
+</div>-->
+<a href="javascript:void(0)" onclick="document.getElementById('addlComments').style.display='block';this.style.display='none';">Show additional comments</a>
+<div id="addlComments"><h3>Additional Comments</h3></div>
+<script type="text/javascript" src="monopoly.js"></script>
