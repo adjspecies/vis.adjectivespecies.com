@@ -1,0 +1,63 @@
+---
+layout: default
+title: Mustelidae
+---
+<script type="text/javascript" src="http://survey.adjectivespecies.com/tempresults/mustelidae/"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+<script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+<style>
+
+    #fig { 
+        width: 900px; 
+        margin: auto;
+    }
+    #slider, #labels {
+        width: 120px;
+        font-size: 11pt;
+        text-align: center;
+        margin: auto;
+    }
+</style>
+<div id="fig">
+    <script type="text/javascript+protovis">
+var vis = new pv.Panel()
+    .width(900)
+    .height(900);
+
+var partition = vis.add(pv.Layout.Partition.Fill)
+    .nodes(pv.dom(data).root("Family: MUSTELIDAE").nodes())
+    .size(function(d) d.nodeValue)
+    .order("descending")
+    .orient("radial");
+
+partition.node.add(pv.Wedge)
+    .fillStyle(pv.Colors.category19().by(function(d) d.parentNode && d.parentNode.nodeName))
+    .strokeStyle("#fff")
+    .lineWidth(.5)
+    .title(function(d) d.nodeName + ' (' + sum(d) + ')');
+
+partition.label.add(pv.Label)
+    .visible(function(d) ((d.nodeValue /*&& d.nodeValue > 1*/) || (!d.nodeValue && d.angle * d.outerRadius >= 9)));
+vis.render();
+
+function sum(node) {
+    if (node.nodeValue !== undefined) {
+        return node.nodeValue;
+    }
+    var toReturn = 0;
+    for (var i = 0; i < node.childNodes.length; i++) {
+        toReturn += sum(node.childNodes[i]);
+    }
+    return toReturn;
+}
+
+</script>
+</div>
+<div id="expound">
+</div>
+<hr />
+<h3>Sources</h3>
+<ul>
+    <li>The [adjective][species] Mustelidae survey: <a href="http://survey.adjectivespecies.com/mustelidae/" target="_blank">http://survey.adjectivespecies.com/mustelidae/</a></li>
+</ul>

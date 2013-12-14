@@ -1,0 +1,202 @@
+---
+layout: default
+title: "State of Furry: Sex and Gender"
+---
+
+        <link rel="stylesheet" type="text/css" href="http://vis.mjs-svc.com/_lib/theme/css/smoothness/jquery-ui-1.8.6.custom.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#slider').slider({
+                    value: 2008,
+                    min: 2008,
+                    max: 2010,
+                    step: 1,
+                    slide: function(ev, ui) {
+                        updateYear(ui.value);
+                    }
+                });
+            });
+        </script>
+        <style>
+            #fig {
+                width: 550px;
+            }
+            #slider, #labels {
+                width: 120px;
+                font-size: 11pt;
+                text-align: center;
+                margin: auto;
+            }
+        </style>
+                <p>This question asks the respondent about their biological sex and gender identity - in 2008 this consisted of three categories and in 2009/2010 five categories.  Use the slider to change the year displayed and the drop-down to view sex, gender, or the two overlaid transparently.</p>
+                <div id="fig">
+                    <p style="text-align: center">Show: 
+                    <select onchange="sexgender(this.value)">
+                        <option value="sex" selected="selected">Sex</option>
+                        <option value="gender">Gender</option>
+                        <option value="both">Both</option>
+                    </select></p>
+                    <script type="text/javascript+protovis">
+var colors = {
+    "Male": "rgba(68, 68, 136, 0.4)",
+    "Predominantly male": "rgba(102, 102, 136, 0.4)",
+    "Equal parts male and female": "rgba(136, 102, 136, 0.3)",
+    "Predominantly female": "rgba(136, 102, 102, 0.4)",
+    "Female": "rgba(136, 34, 34, 0.4)",
+    "Other": "rgba(255, 255, 255 0.0)"
+};
+var currYear = 2008;
+var donutscale = pv.Scale.linear(0, data[currYear].n).range(0, 2 * Math.PI);
+var sexVisible = true, genderVisible = false;
+
+var stacks = new pv.Panel()
+    .width(550)
+    .height(220);
+
+var sex = stacks.add(pv.Panel)
+    .width(500)
+    .height(200)
+.add(pv.Layout.Stack)
+    .layers(["Male", "Female", "Other"])
+    .values(pv.values(data))
+    .offset("expand")
+    .x(function() this.index * 200)
+    .y(function(d, p) d.sex[p] / d.n * 100)
+    .visible(function() sexVisible)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) p)
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) colors[p]);
+var sexLabels = sex.anchor("right").add(pv.Label)
+    .text(function(d, p) p)
+    .textAlign("Left")
+    .visible(function(d, p) (sexVisible && !genderVisible) && this.index == 2 && p != "Other");
+var gender = stacks.add(pv.Panel)
+    .width(500)
+    .height(200)
+.add(pv.Layout.Stack)
+    .layers(["Male", "Predominantly male", "Equal parts male and female", "Predominantly female", "Female", "Other"])
+    .values(pv.values(data))
+    .offset("expand")
+    .x(function() this.index * 200)
+    .y(function(d, p) d.gender[p] ? d.gender[p] / d.n * 100 : 0)
+    .visible(function() genderVisible)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) p)
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) colors[p]);
+var genderLabels = gender.anchor("right").add(pv.Label)
+    .text(function(d, p) p)
+    .textAlign("Left")
+    .visible(function(d, p) genderVisible && this.index == 2 && p != "Other");
+stacks.add(pv.Label)
+    .text("2008")
+    .bottom(0)
+    .left(0);
+stacks.add(pv.Label)
+    .text("2009")
+    .bottom(0)
+    .left(200)
+    .textAlign("center");
+stacks.add(pv.Label)
+    .text("2010")
+    .bottom(0)
+    .left(400)
+    .textAlign("right");
+
+stacks.render();
+
+var yearly = new pv.Panel()
+    .width(550)
+    .height(280);
+
+var sexDonut = yearly.add(pv.Wedge)
+    .data(pv.entries(data[currYear].sex))
+    .left(275)
+    .bottom(140)
+    .innerRadius(60)
+    .outerRadius(90)
+    .angle(function(d) donutscale(d.value))
+    .fillStyle(function(d) colors[d.key])
+    .title(function(d) d.key)
+    .cursor("crosshair");
+sexDonut.anchor("start").add(pv.Label)
+    .text("Sex")
+    .textAngle(-Math.PI * 2)
+    .textBaseline("middle")
+    .textAlign("left")
+    .font("italic 8pt sans-serif")
+    .visible(function() this.index == 0);
+sexDonut.anchor("center").add(pv.Label)
+    .text(function(d) (d.value / data[currYear].n * 100).toFixed(1) + "%")
+    .visible(function(d) d.key != "Other");
+var genderDonut = yearly.add(pv.Wedge)
+    .data(pv.entries(data[currYear].gender))
+    .left(275)
+    .bottom(140)
+    .innerRadius(91)
+    .outerRadius(120)
+    .angle(function(d) donutscale(d.value))
+    .fillStyle(function(d) colors[d.key])
+    .title(function(d) d.key)
+    .cursor("crosshair");
+genderDonut.anchor("start").add(pv.Label)
+    .text("Gender")
+    .textAngle(-Math.PI * 2)
+    .textBaseline("middle")
+    .textAlign("left")
+    .font("italic 8pt sans-serif")
+    .visible(function() this.index == 0);
+genderDonut.anchor("center").add(pv.Label)
+    .text(function(d) (d.value / data[currYear].n * 100).toFixed(1) + "%")
+    .visible(function(d) d.key != "Other");
+yearly.anchor("center").add(pv.Label)
+    .text(function() currYear);
+yearly.render();
+
+function updateYear(year) {
+    currYear = year;
+    donutscale = pv.Scale.linear(0, data[currYear].n).range(0, 2 * Math.PI);
+    sexDonut.data(pv.entries(data[currYear].sex));
+    genderDonut.data(pv.entries(data[currYear].gender));
+    yearly.render();
+}
+
+function sexgender(option) {
+    switch (option) {
+        case "sex":
+            sexVisible = true;
+            genderVisible = false;
+            break;
+        case "gender":
+            sexVisible = false;
+            genderVisible = true;
+            break;
+        case "both":
+            sexVisible = true;
+            genderVisible = true;
+            break;
+    }
+    stacks.render();
+}
+                    </script>
+                </div>
+                <div id="slider"></div>
+                <div id="labels">2008 - 2009 - 2010</div>
+                <div id="expound">
+                    <h2>Sex and Gender</h2>
+                    <p>Go to any convention, any furmeet, any chatroom or MUCK online, and it is plain to see that the majority of furries are male.  Many have noted that it seems that the number of females have increased, which is likely true, but only because the total number of furries has increased.  Indeed, the number of males tends to simply hover around 80% as time goes on.  There are likely many reasons for this, but it's hard to discern what the primary cause may be.</p>
+                    <p>Another thing noted by many is the thought that if you see a girl online, there's a good chance that it's a guy.  This, in part, is the root of the difference between sex and gender - sex is what your drivers license says, gender is how you view yourself psychologically or even physically in the case of gender dysmorphia.  One can see that there is a feathering effect of gender based around the divide between the sexes - some small portion of both males and females feel not quite the same gender as their biological sex.</p>
+                </div>
+                <div id="links">
+                    <a href="yearsInFurry.html">&laquo; Years in Furry</a> - <a href=".">Home</a> - <a href="orientation.html">Sexual Orientation &raquo;</a>
+                </div>

@@ -1,0 +1,211 @@
+---
+layout: default
+title: Years in the Fandom vs. Sexual Orientation
+---
+        <script type="text/javascript" src="data.js"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/protovis"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery/1.6.2"></script>
+        <script type="text/javascript" src="http://lib.jnsq.us/jquery-ui/1.8.14"></script>
+        <style>
+            #fig, #fig2 {
+                width: 550px;
+                margin: auto;
+            }
+            #slider, #labels {
+                width: 120px;
+                font-size: 11pt;
+                text-align: center;
+                margin: auto;
+            }
+        </style>
+                <div id="fig">
+                    <script type="text/javascript+protovis">
+var colors = {
+    "Gay": "#fbc",
+    "Bi": "#ecf",
+    "Straight": "#ccf",
+    "Pansexual": "#cfc",
+    "Asexual": "#ccc"
+};
+var lightColors = {
+    "Gay": "#fcd",
+    "Bi": "#edf",
+    "Straight": "#ddf",
+    "Pansexual": "#dfd",
+    "Asexual": "#ddd"
+};
+
+var stacks = new pv.Panel()
+    .width(550)
+    .height(375)
+    .bottom(25)
+    .top(20);
+
+var all = stacks.add(pv.Panel)
+    .width(500)
+    .height(200);
+var layout = all.add(pv.Layout.Stack)
+    .layers([0, 1, 2, 3, 4])
+    .values(pv.values(data.ALL.data))
+    .offset("expand")
+    .x(function() this.index * 30 + 60)
+    .y(function(d, p) d[p] / data.ALL.sums[this.index] * 100)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) labels[p])
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) colors[labels[p]]);
+layout.anchor("right").add(pv.Label)
+    .left(57)
+    .text(function(d, p) labels[p])
+    .textAlign("right")
+    .textBaseline("bottom")
+    .visible(function() this.index == 2);
+layout.anchor("bottom").add(pv.Label)
+    .data(pv.keys(data.ALL.data))
+    .textBaseline("top")
+    .text(function(d, p) p == 0 ? (d == '0' ? '<1' : (d == '15' ? '>15' : d)) : "");
+stacks.add(pv.Label)
+    .text("Years in fandom")
+    .textAlign("center")
+    .font("normal italic 100% sans-serif")
+    .left(275)
+    .top(225);
+stacks.add(pv.Label)
+    .text("Sexuality")
+    .textBaseline("top")
+    .textAngle(-Math.PI / 2)
+    .font("normal italic 100% sans-serif")
+    .left(0)
+    .top(100);
+
+var male = stacks.add(pv.Panel)
+    .top(250)
+    .width(250)
+    .height(100);
+var mlayout = male.add(pv.Layout.Stack)
+    .layers([0, 1, 2, 3, 4])
+    .values(pv.values(data.MALE.data))
+    .offset("expand")
+    .x(function() this.index * 15 + 30)
+    .y(function(d, p) d[p] / data.MALE.sums[this.index] * 100)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) labels[p])
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) lightColors[labels[p]]);
+stacks.add(pv.Label)
+    .text("Male respondents only")
+    .textAlign("center")
+    .textStyle("#666")
+    .font("normal italic 100% sans-serif")
+    .left(145)
+    .top(370);
+var female = stacks.add(pv.Panel)
+    .top(250)
+    .left(300)
+    .width(250)
+    .height(100);
+var flayout = female.add(pv.Layout.Stack)
+    .layers([0, 1, 2, 3, 4])
+    .values(pv.values(data.FEMALE.data))
+    .offset("expand")
+    .x(function() this.index * 15 + 30)
+    .y(function(d, p) d[p] / data.FEMALE.sums[this.index] * 100)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) labels[p])
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) lightColors[labels[p]]);
+stacks.add(pv.Label)
+    .text("Female respondents only")
+    .textAlign("center")
+    .textStyle("#666")
+    .font("normal italic 100% sans-serif")
+    .left(445)
+    .top(370);
+
+
+stacks.render();
+                    </script>
+                </div>
+                <div id="expound">
+                    <p>This graph charts the number of years a respondent has spent in the fandom against their professed sexual orientation.  The data for this graph was provided from Klisoura's furry survey for 2011, and is meant to illustrate a correlation only.  Judging by responses to informal questions and to the [adjective][species] Census and Survey, this bears out the perceived influx of a larger heterosexual portion of the fandom, which, it has been speculated by some of the respondents, is due to the popularity of furry on non-furry sites such as Facebook, which are more a reflection of society as a whole that the more technocratic society that dominated the self-professed fandom for so many years.</p>
+                    <p>Below, you will see the same graph taking the number of respondents into account.  While the trends aren't quite as clear, it gives more of an idea of how many furries answered for which years-in-the-fandom range overall.</p>
+                </div>
+                <div id="fig2">
+                    <script type="text/javascript+protovis">
+var colors = {
+    "Gay": "#fbc",
+    "Bi": "#ecf",
+    "Straight": "#ccf",
+    "Pansexual": "#cfc",
+    "Asexual": "#ccc"
+};
+var secondOffset = "none";
+
+var stacks2 = new pv.Panel()
+    .width(550)
+    .height(200)
+    .bottom(25)
+    .top(20);
+
+stacks2.add(pv.Panel)
+    .width(500)
+    .height(200)
+var layout2 = stacks2.add(pv.Layout.Stack)
+    .layers([0, 1, 2, 3, 4])
+    .values(pv.values(data.ALL.data))
+    .offset(function() secondOffset)
+    .x(function() this.index * 30 + 60)
+    .y(function(d, p) d[p] / 4)
+.layer.add(pv.Area)
+    .cursor("crosshair")
+    .title(function(d, p) labels[p])
+    .lineWidth(1)
+    .strokeStyle("#fff")
+    .fillStyle(function(d, p) colors[labels[p]]);
+layout2.anchor("bottom").add(pv.Label)
+    .left(57)
+    .text(function(d, p) labels[p])
+    .textAlign("right")
+    .textBaseline("bottom")
+    .visible(function() this.index == 2);
+layout2.anchor("bottom").add(pv.Label)
+    .data(pv.keys(data.ALL.data))
+    .textBaseline("top")
+    .text(function(d, p) p == 0 ? (d == '0' ? '<1' : (d == '15' ? '>15' : d)) : "");
+stacks2.add(pv.Label)
+    .text("Years in fandom")
+    .textAlign("center")
+    .font("normal italic 100% sans-serif")
+    .left(275)
+    .top(225);
+stacks2.add(pv.Label)
+    .text("Sexuality")
+    .textBaseline("top")
+    .textAngle(-Math.PI / 2)
+    .font("normal italic 100% sans-serif")
+    .left(0)
+    .bottom(50);
+stacks2.render();
+function redraw(offset) {
+    secondOffset = offset;
+    stacks2.render();
+}
+                    </script>
+                    <p><a href="javascript:void(0);" onclick="redraw(secondOffset=='none'?'wiggle':'none');">Click to change offset</a></p>
+                </div>
+                <hr />
+                <h3>Sources</h3>
+                <ul>
+                    <li>Klisoura's Furry Poll for 2011, data accessed March 14th, 2012:
+                    <ul>
+                        <li><a href="http://collie.su/years_orientation.html" target="_blank">Years vs. Orientation</a></li>
+                        <li><a href="http://collie.su/years_orientation_gender.html" target="_blank">Years vs. Orientation by Gender</a></li>
+                    </ul>
+                    </li>
+                </ul>
