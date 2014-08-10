@@ -1,0 +1,75 @@
+---
+layout: default
+title: Species Popularity Visualization
+additionalHeader: '<link rel="stylesheet" type="text/css" href="styles/style.css" />'
+
+---
+
+    <div class="filters">
+      <div class="filter-group" style="background: #9280a2">
+        <div class="filter-title">
+          <span>Baseline</span>
+        </div>
+        <div class="filter-controls">
+          <span>Sex:</span>
+          <select id="baseline-sex-options">
+            <option value=".">All</option>
+            <option value="a">Male</option>
+            <option value="b">Female</option>
+            <option value="c">Other</option>
+          </select>
+          <span>Gender:</span>
+          <select id="baseline-gender-options">
+            <option value=".">All</option>
+            <option value="a">Male</option>
+            <option value="e">Female</option>
+            <option value="[bcdf]">Other</option>
+          </select>
+          <span>Orientation:</span>
+          <select id="baseline-orientation-options">
+            <option value=".">All</option>
+            <option value="[01]">Heterosexual</option>
+            <option value="[234]">Bisexual</option>
+            <option value="[56]">Homosexual</option>
+          </select>
+          <span>Total responses:</span>
+          <span class="baseline-total-respondents"></span>
+        </div>
+      </div>
+      <div class="filter-group" style="background: #98abc5">
+        <div class="filter-title">
+          <span>Query</span>
+        </div>
+        <div class="filter-controls">
+          <span>Sex:</span>
+          <select id="query-sex-options">
+            <option value=".">All</option>
+            <option value="a">Male</option>
+            <option value="b">Female</option>
+            <option value="c">Other</option>
+          </select>
+          <span>Gender:</span>
+          <select id="query-gender-options">
+            <option value=".">All</option>
+            <option value="a">Male</option>
+            <option value="e">Female</option>
+            <option value="[bcdf]">Other</option>
+          </select>
+          <span>Orientation:</span>
+          <select id="query-orientation-options">
+            <option value=".">All</option>
+            <option value="[01]">Heterosexual</option>
+            <option value="[234]">Bisexual</option>
+            <option value="[56]">Homosexual</option>
+          </select>
+          <span>Total responses:</span>
+          <span class="query-total-respondents"></span>
+        </div>
+      </div>
+    </div>
+    <div id="graph"></div>
+    <script src="scripts/underscore-min.js"></script>
+    <script src="scripts/d3.v3.min.js"></script>
+    <script src="scripts/d3-tip.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <br clear="all" />
