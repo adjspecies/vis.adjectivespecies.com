@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     http://vis.adjectivespecies.com - visualizations of the furry fandom.
-    Copyright (C) 2012  Matthew Scott
+    Copyright (C) 2012  Madison Scott-Clary
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -306,7 +306,7 @@ function popularity(d) {
 ?>
         <h1>FurAffinity Statistics</h1>
         <div id="vis" style="padding: 0.5em">
-            <p>Welcome to the FurAffinity.net Statistics visualizer.  This is a place for you to drop off your stats and view them in an easy to understand visual format.  You may view how your comments, views, faves, and overall popularity of submissions compare with each other and over time.  This is a project by <a href="http://drab-makyo.com">Matthew Scott</a>.</p>
+            <p>Welcome to the FurAffinity.net Statistics visualizer.  This is a place for you to drop off your stats and view them in an easy to understand visual format.  You may view how your comments, views, faves, and overall popularity of submissions compare with each other and over time.  This is a project by <a href="http://drab-makyo.com">Madison Scott-Clary</a>.</p>
             <p class="even"><a href="help.shtml">Help</a> on the visualizer (read me first :3 )</p>
             <p class="odd"><a href="?user=ranna">View a sample</a></p>
             <p class="even"><a href="list.php">See who else has posted their stats</a></p>
