@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html> 
-    <head> 
-    <title>{{ page.title }} | [adjective][species]</title> 
+<html>
+    <head>
+    <title>{{ page.title }} | [adjective][species]</title>
         <link rel="stylesheet" type="text/css" href="http://assets.adjectivespecies.com/bootstrap/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
         <link rel="icon" type="image/png" href="http://assets.adjectivespecies.com/favicon.png" />
         {% if page.additionalHeader %}{{ page.additionalHeader }}{% endif %}
     </head>
-    <body> 
+    <body>
         <div class="topbar">
             <div class="topbar-inner">
                 <div class="container-fluid">
@@ -35,17 +35,15 @@
         <footer>
             Content <a href="http://lib.jnsq.us/license/cc-by-nc-sa" target="_blank"><img src="http://lib.jnsq.us/licenses/small/by-nc-sa_inline.png" alt="CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)" /> [adjective][species], 2011 - 2013</a> under the CC BY-NC-SA (Attribution-NonCommercial-ShareAlike) license<br />
         </footer>
-        <!-- Piwik --> 
-        <script type="text/javascript">
-            var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.jnsq.us/" : "http://piwik.jnsq.us/");
-            document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-        </script><script type="text/javascript">
-            try {
-                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 9);
-                piwikTracker.trackPageView();
-                piwikTracker.enableLinkTracking();
-            } catch( err ) {}
-        </script><noscript><p><img src="http://piwik.jnsq.us/piwik.php?idsite=9" style="border:0" alt="" /></p></noscript>
-        <!-- End Piwik Tracking Tag -->
-    </body> 
-</html> 
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-64246714-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     http://vis.adjectivespecies.com - visualizations of the furry fandom.
-    Copyright (C) 2012  Matthew Scott
+    Copyright (C) 2012  Madison Scott-Clary
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
