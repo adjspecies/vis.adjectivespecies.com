@@ -1,0 +1,83 @@
+---
+layout: default
+title: Furry Survey Overview
+---
+
+<link rel="stylesheet" type="text/css" href="../lib/nvd3/nv.d3.css" />
+<style type="text/css">
+    .charts div {
+        height: 400px;
+        padding-bottom: 1em;
+    }
+    .sex_importance .nv-series-5 path {
+        stroke-width: 5!important;
+    }
+</style>
+<div class="charts">
+    <div id="age">
+        <h1>Age</h1>
+        <svg></svg>
+    </div>
+    <div id="biological_sex">
+        <h1>Clinical Sex</h1>
+        <svg></svg>
+    </div>
+    <div id="gender_identity">
+        <h1>Gender identity</h1>
+        <svg></svg>
+    </div>
+    <div id="sexual_orientation">
+        <h1>Sexual orientation</h1>
+        <svg></svg>
+    </div>
+    <div id="race">
+        <h1>Race</h1>
+        <svg></svg>
+    </div>
+    <div id="political_views__social">
+        <h1>Political views - social</h1>
+        <svg></svg>
+    </div>
+    <div id="political_views__economic">
+        <h1>Political views - economic</h1>
+        <svg></svg>
+    </div>
+    <div id="relationship">
+        <h1>Relationship status</h1>
+        <svg></svg>
+    </div>
+    <div id="partner_is_furry">
+        <h1>Partner is also furry (5-year mean)</h1>
+        <svg></svg>
+    </div>
+    <div id="polyamory__sexuality">
+        <h1>Polyamory - sexuality</h1>
+        <svg></svg>
+    </div>
+    <div id="polyamory__romantic">
+        <h1>Polyamory - romantic</h1>
+        <svg></svg>
+    </div>
+    <div class="sex_importance" id="sex_importance__fandom">
+        <h1>Perceived importance of sex - to the fandom overall</h1>
+        <svg></svg>
+    </div>
+    <div class="sex_importance" id="sex_importance__self">
+        <h1>Perceived importance of sex - to self</h1>
+        <svg></svg>
+    </div>
+    <div class="sex_importance" id="sex_importance__others">
+        <h1>Perceived importance of sex - to others in the fandom</h1>
+        <svg></svg>
+    </div>
+    <div class="sex_importance" id="sex_importance__public">
+        <h1>Perceived importance of sex - to the public</h1>
+        <svg></svg>
+    </div>
+</div>
+
+        <script type="text/javascript" src="../lib/underscore-min.js"></script>
+		<script type="text/javascript" src="../lib/d3/d3.v3.min.js"></script>
+		<script type="text/javascript" src="../lib/nvd3/nv.d3.js"></script>
+		<script type="text/javascript" src="data.js"></script>
+		<script type="text/javascript" src="furrysurvey.js"></script>

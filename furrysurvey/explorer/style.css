@@ -1,0 +1,104 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+div#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a6bddb;
+    opacity: 0.8;
+    text-align: center;
+    padding-top: 25%;
+}
+
+section#selector {
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+    float: left;
+    background-color: #eee;
+    margin: 0px;
+}
+
+div.inner-padding {
+    padding: 1em;
+}
+
+ul.toggles li {
+    color: #aaa;
+    background-color: #eee;
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0.5em;
+}
+
+ul.toggles li.enabled {
+    color: #000;
+    background-color: #ddd;
+}
+
+section#explorer {
+    width: 80%;
+    float: right;
+    height: 100%;
+    overflow: scroll;
+    margin: 0;
+}
+
+header {
+    border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 4em;
+}
+
+header div.chart {
+    border: none;
+}
+
+div.chart {
+    float: left;
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 0.25em;
+}
+
+div.charts {
+    float: left;
+    text-align: center;
+    border: 2px solid #ddd;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+div.chart h3 {
+    display: block;
+    background-color: #fff;
+    margin: 0px;
+}
+
+div.chart span.reset {
+    display: block;
+}
+
+div.charts h2 {
+    display: block;
+    background-color: #ddd;
+    margin: 0px;
+}
+
+div.charts h2 a.minimize {
+    float: right;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+div.charts.minimized div.chart {
+    display: none;
+}
