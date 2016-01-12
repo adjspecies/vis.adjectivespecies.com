@@ -63,10 +63,11 @@ function quantized(data, selector) {
     matrix[d.male_quantized - 1][d.female_quantized - 1]++;
   });
 
-  var max = 0,
+  var max = -data.length,
     min = data.length;
   matrix.forEach(function(row) {
     row.forEach(function(cell) {
+      cell = cell - (data.length / 25);
       if (cell < min) {
         min = cell;
       }
@@ -75,9 +76,9 @@ function quantized(data, selector) {
       }
     });
   });
-  var scale = d3.scale.log(50)
+  var scale = d3.scale.linear()
     .domain([min, max])
-    .range(['#ffffb2', '#fd8d3c', '#bd0026']);
+    .range(['#ffeda0', '#f03b20']);
 
   vis = d3.select(selector).append('svg')
   .attr({
