@@ -1,7 +1,7 @@
 var furrySurvey = function(d3, nv, _data) {
   var utils = {
     objectToArray: function(obj) {
-      return obj instanceof Array ? 
+      return obj instanceof Array ?
         obj :
         Object.keys(obj).map(function(k) {
           return {key: k, values: obj[k]};
@@ -24,8 +24,8 @@ var furrySurvey = function(d3, nv, _data) {
         year.values = utils.objectToArray(year.values);
       });
       return {
-        n: _.reduce(_.values(n), function(m, n) { 
-          return m + (isNaN(parseInt(n)) ? 0 : n); 
+        n: _.reduce(_.values(n), function(m, n) {
+          return m + (isNaN(parseInt(n)) ? 0 : n);
         }) / 60,
         values: _.map(obj[0].values, function(item, index) {
           return _.reduce(obj, function(m, year) {
@@ -52,7 +52,7 @@ var furrySurvey = function(d3, nv, _data) {
       .reverse()
       .map(function(yearItem) {
         return {
-          key: parseInt(item.key) - parseInt(yearItem.key), 
+          key: parseInt(item.key) - parseInt(yearItem.key),
           values: yearItem.values / n[item.key] * 100
         };
       });
@@ -82,7 +82,7 @@ var furrySurvey = function(d3, nv, _data) {
   }
 
   function chartStacked(n, _chartData, id) {
-    var chartData = _.map(_.keys(_chartData[0].values), function(key) {
+    var chartData = _.map(_.keys(_chartData[_chartData.length - 1].values), function(key) {
       return { key: key, values: _.map(_chartData, function(year) {
         return [ isNaN(year.values[key]) ? 0 : year.values[key] / n[year.key] * 100, parseInt(year.key) ];
       }) };
@@ -140,28 +140,81 @@ var furrySurvey = function(d3, nv, _data) {
         .datum(chartData)
         .transition().duration(500)
         .call(vis);
-      
+
       nv.utils.windowResize(vis.update);
-      
+
       return vis;
     });
   }
 
-  chartAge(_data.n, utils.objectToArray(_data.demographics.age));
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.biological_sex), 'biological_sex');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.gender_identity), 'gender_identity');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.sexual_orientation), 'sexual_orientation');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.race), 'race');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.political_views.social), 'political_views__social');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.political_views.economic), 'political_views__economic');
-  chartStacked(_data.n, utils.objectToArray(_data.demographics.relationship_status), 'relationship');
-  chartPie(_data.n, utils.objectToArray(_data.furry_metadata.partner_is_furry), 'partner_is_furry');
-  chartPie(_data.n, utils.objectToArray(_data.demographics.polyamory.sexuality), 'polyamory__sexuality');
-  chartPie(_data.n, utils.objectToArray(_data.demographics.polyamory.romantic), 'polyamory__romantic');
-  chartSexImportance(_data.n, _data.perception_of_fandom.importance_of_sex.fandom, 'fandom');
-  chartSexImportance(_data.n, _data.perception_of_fandom.importance_of_sex.self, 'self');
-  chartSexImportance(_data.n, _data.perception_of_fandom.importance_of_sex.others, 'others');
-  chartSexImportance(_data.n, _data.perception_of_fandom.importance_of_sex.public, 'public');
+  chartAge(
+    _data.n,
+    utils.objectToArray(_data.demographics.age));
+
+  chartStacked(
+    _data.n,
+    utils.objectToArray(_data.demographics.biological_sex),
+    'biological_sex');
+
+  chartStacked(
+    _data.n,
+    utils.objectToArray(_data.demographics.gender_identity),
+    'gender_identity');
+
+  chartStacked(
+    _data.n,
+    utils.objectToArray(_data.demographics.sexual_orientation),
+    'sexual_orientation');
+
+  chartStacked(
+    _data.n,
+    utils.objectToArray(_data.demographics.race),
+    'race');
+
+  chartStacked(
+    _data.n,
+    utils.objectToArray(_data.demographics.political_views.social),
+    'political_views__social');
+
+  chartStacked(
+    _data.n, utils.objectToArray(_data.demographics.political_views.economic),
+    'political_views__economic');
+
+  chartStacked(
+    _data.n, utils.objectToArray(_data.demographics.relationship_status),
+    'relationship');
+
+  chartPie(
+    _data.n,
+    utils.objectToArray(_data.furry_metadata.partner_is_furry),
+    'partner_is_furry');
+
+  chartPie(
+    _data.n,
+    utils.objectToArray(_data.demographics.polyamory.sexuality),
+    'polyamory__sexuality');
+
+  chartPie(
+    _data.n,
+    utils.objectToArray(_data.demographics.polyamory.romantic),
+    'polyamory__romantic');
+
+  chartSexImportance(
+    _data.n,
+    _data.perception_of_fandom.importance_of_sex.self,
+    'self');
+
+  chartSexImportance(
+    _data.n,
+    _data.perception_of_fandom.importance_of_sex.others,
+    'others');
+
+  chartSexImportance(
+    _data.n,
+    _data.perception_of_fandom.importance_of_sex.public,
+    'public');
 };
 
-furrySurvey(d3, nv, data);
+d3.json('overview.json', function(data) {
+  furrySurvey(d3, nv, data);
+});
