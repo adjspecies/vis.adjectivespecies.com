@@ -147,6 +147,11 @@ var furrySurvey = function(d3, nv, _data) {
     });
   }
 
+  chartPie(
+    _data.n,
+    utils.objectToArray(_data.furry_metadata.furry_status),
+    'furry_status');
+
   chartAge(
     _data.n,
     utils.objectToArray(_data.demographics.age));
@@ -177,11 +182,13 @@ var furrySurvey = function(d3, nv, _data) {
     'political_views__social');
 
   chartStacked(
-    _data.n, utils.objectToArray(_data.demographics.political_views.economic),
+    _data.n,
+    utils.objectToArray(_data.demographics.political_views.economic),
     'political_views__economic');
 
   chartStacked(
-    _data.n, utils.objectToArray(_data.demographics.relationship_status),
+    _data.n,
+    utils.objectToArray(_data.demographics.relationship_status),
     'relationship');
 
   chartPie(
