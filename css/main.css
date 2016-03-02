@@ -42,13 +42,10 @@ footer {
 }
 
 section {
-    border: 2px solid #eee;
-    border-radius: 1em;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
     margin: 0;
     padding: 1em;
     min-height: 2em;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
