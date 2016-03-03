@@ -12,8 +12,8 @@
   var selectedSpecies = [];
 
   // Chart constants
-  var margin = {top: 15, right: 80, bottom: 35, left: 40};
-  var width = 860 - margin.left - margin.right;
+  var margin = {top: 15, right: 20, bottom: 35, left: 40};
+  var width = 800 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
   var x = d3.scale
@@ -102,10 +102,10 @@
       .attr('y', 25);
 
   // The "relative" checkbox
-  d3.select('body')
+  d3.select('.additional-labels')
     .append('label')
-      .attr('class', 'relative-checkbox')
-      .html('<input type="checkbox"> Relative')
+      .attr('class', 'label-relative')
+      .html('<input type="checkbox"> Relative y-axis')
     .select('input')
       .on('change', function () {
         if (this.checked) {
@@ -332,7 +332,7 @@
    */
   function highlightSpeciesButton(speciesToHighlight) {
     // Unselect all species buttons
-    d3.select('.labels').selectAll('.label')
+    d3.select('.labels').selectAll('.label-species')
       .classed('active', false);
 
     // If all species are selected then highlight the "All" button
@@ -341,7 +341,7 @@
       d3.select('.labels .label-all').classed('active', true);
     } else {
       speciesToHighlight.forEach(function (d) {
-        d3.select('.label.' + d.speciesId.toLowerCase())
+        d3.select('.label-species.' + d.speciesId.toLowerCase())
           .classed('active', true);
       });
     }
@@ -388,7 +388,7 @@
       .enter()
         .append('label')
         .attr('class', function (d) {
-          return 'label ' + d.speciesId.toLowerCase();
+          return 'label-species ' + d.speciesId.toLowerCase();
         })
         .html(function (d) {
           return '<input type="radio" name="species" value="' + d.species + '"> ' + d.speciesName + ' (' + d.totalCount + ')';
