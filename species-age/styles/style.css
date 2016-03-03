@@ -1,10 +1,10 @@
-body {
+.chart-container {
   font-family: sans-serif;
   font-size: 12px;
-  margin: 0;
+  position: relative;
 }
 
-.chart {
+.chart-container .chart {
   font-size: 11px;
 }
 
@@ -41,27 +41,30 @@ body {
   stroke: red;
 }
 
-.labels {
-  left: 798px;
+.chart-container .labels {
+  left: 800px;
   position: absolute;
-  top: 10px;
+  top: 0;
 }
 
-.label, .label-all {
+.label-species, .label-all {
+  clear: both;
   cursor: pointer;
   display: block;
   margin: 0;
   padding: 0.15em;
+  text-align: left;
+  width: auto;
 }
 
-.label:hover {
+.label-species:hover, .label-all:hover {
   color: #3B79F0;
 }
 
-.label.active {
+/*.label-species.active, .label-all.active {
   font-weight: bold;
   color: #3B79F0;
-}
+}*/
 
 .key {
   font-size: 12px;
@@ -77,6 +80,15 @@ body {
   stroke-width: 1.5px;
 }
 
-.relative-checkbox {
-  margin-left: 37px;
+.additional-labels {
+  clear: both;
+  padding-left: 20px;
+}
+
+.label-relative {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0.15em;
+  text-align: left;
 }
