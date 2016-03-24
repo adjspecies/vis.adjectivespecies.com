@@ -1,0 +1,94 @@
+.chart-container {
+  font-family: sans-serif;
+  font-size: 13px;
+  position: relative;
+}
+
+.chart-container .chart {
+  font-size: 11px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis .domain {
+  /*transform: translate(0.5px, 0.5px);*/
+}
+
+.y.axis .domain {
+  /*transform: translate(0.5px, 0.5px);*/
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.gender {
+  stroke: steelblue;
+}
+
+.gender.faded {
+  opacity: 0.08;
+}
+
+.total {
+  stroke-width: 2px;
+  stroke: red;
+}
+
+.chart-container .labels {
+  left: 710px;
+  position: absolute;
+  top: 0;
+}
+
+.label-gender, .label-all {
+  clear: both;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0.15em;
+  text-align: left;
+  width: auto;
+}
+
+.label-gender:hover, .label-all:hover {
+  color: #3B79F0;
+}
+
+/*.label-gender.active, .label-all.active {
+  font-weight: bold;
+  color: #3B79F0;
+}*/
+
+.key {
+  font-size: 12px;
+}
+
+.key .key-all .line {
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+.key .key-gender .line {
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.additional-labels {
+  clear: both;
+  padding-left: 20px;
+}
+
+.label-relative {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0.15em;
+  text-align: left;
+}
