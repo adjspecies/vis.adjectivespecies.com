@@ -1,2 +1,2 @@
 name: "Visualizations | [adjective][species]"
-markdown: redcarpet
+markdown: kramdown
