@@ -3,7 +3,7 @@ layout: default
 title: Results from Oxley's 2015 Survey
 ---
 
-These results are from Oxley's 2015 online survey.  They are a companion to his piece on \[a\]\[s\], which will be printed soon!
+These results are from Oxley's 2015 online survey.  They are a companion to his piece on \[a\]\[s\], which is available [here](http://www.adjectivespecies.com/2016/05/17/acceptance-and-affurmation/)!
 
 ![Gender](1--Gender.png)
 
