@@ -26,6 +26,8 @@ d3.csv('furry-philosophy-edited.csv', function(data) {
       }
     }
   }
+  d3.select('.n')
+    .text('n = ' + (data.length - 1));
   graph(prepData(aggregate));
 });
 
