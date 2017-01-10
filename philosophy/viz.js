@@ -26,6 +26,15 @@ d3.csv('furry-philosophy-edited.csv', function(data) {
       }
     }
   }
+  for (var question in aggregate) {
+    var v = ['strongly_agree', 'agree', 'slightly_agree', 'neutral', 'slightly_disagree', 'disagree', 'strongly_disagree'];
+    var r = 0;
+    for (var i = 0; i < v.length; i++) {
+      r += aggregate[question][v[i]] * (i + 1);
+    }
+    aggregate[question]['mean'] = r / data.length;
+  }
+  window.AGGREGATE = aggregate;
   d3.select('.n')
     .text('n = ' + (data.length - 1));
   graph(prepData(aggregate));
@@ -69,6 +78,7 @@ var values = [
 ]
 
 function graph(data) {
+  window.PHIL_DATA = data;
   data.forEach(function (question) {
     nv.addGraph(function() {
       var chart = nv.models.discreteBarChart()
@@ -79,6 +89,7 @@ function graph(data) {
           .duration(350);
 
       var div = d3.select('.phil:nth-of-type(' + question.index + ')');
+      var mean = question.values.shift();
       div.select('svg')
           .datum([question])
           .call(chart);
@@ -87,8 +98,10 @@ function graph(data) {
 
       nv.utils.windowResize(chart.update);
 
+      div.select('.mean').html("<strong>Average: " + values[Math.round(mean.value) - 1] + "</strong>");
+
       return chart;
-    });
+    })
   });
 }
 
