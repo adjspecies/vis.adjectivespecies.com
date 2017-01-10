@@ -156,9 +156,14 @@ var furrySurvey = function(d3, nv, _data) {
     _data.n,
     utils.objectToArray(_data.demographics.age));
 
+  chartPie(
+    _data.n,
+    utils.objectToArray(_data.demographics.gender_alignment),
+    'gender_alignment')
+    
   chartStacked(
     _data.n,
-    utils.objectToArray(_data.demographics.biological_sex),
+    utils.objectToArray(utils.objectToArray(_data.demographics.biological_sex)),
     'biological_sex');
 
   chartStacked(
