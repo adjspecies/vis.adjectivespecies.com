@@ -40,6 +40,14 @@ d3.csv('furry-philosophy-edited.csv', function(data) {
   graph(prepData(aggregate));
 });
 
+var demographicQuestions = {
+  'How old are you?': 'age',
+  'What gender do you identify as?': 'gender_identity',
+  'Does your gender identity align with your sex assigned at birth?': 'gender_alignment',
+  'What species is your primary character?': 'species',
+  'Where in the world are you located?': 'location',
+  'What religion do you identify with?': 'religion',
+}
 var philosophyQuestions = [
   'If we cannot observe something, it may as well not exist.',
   'There is/are no God, gods, or deities.',
@@ -75,7 +83,8 @@ var values = [
   'disagree',
   'strongly disagree',
   'don\'t know'
-]
+];
+var demographicStart = 0;
 
 function graph(data) {
   window.PHIL_DATA = data;
@@ -101,8 +110,9 @@ function graph(data) {
       div.select('.mean').html("<strong>Average: " + values[Math.round(mean.value) - 1] + "</strong>");
 
       return chart;
-    })
+    });
   });
+
 }
 
 function prepData(data) {
@@ -115,6 +125,14 @@ function prepData(data) {
       values: prepQuestion(data[question])
     });
   });
+  demographicStart = i - 1;
+  for (var question in demographicQuestions) {
+    prepped.push({
+      key: demographicQuestions[question],
+      index: i++,
+      values: prepQuestion(data[question])
+    });
+  }
   return prepped;
 }
 
