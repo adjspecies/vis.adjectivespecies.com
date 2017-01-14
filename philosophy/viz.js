@@ -109,6 +109,13 @@ function graph(data) {
 
       div.select('.mean').html("<strong>Average: " + values[Math.round(mean.value) - 1] + "</strong>");
 
+      if (philosophyQuestions.indexOf(question.key) > -1) {
+        d3.select('.means tbody').html(
+          d3.select('.means tbody').html() +
+          '<tr><td>' + question.key + '</td><td>' +
+          values[Math.round(mean.value) - 1] + '</td></tr>');
+      }
+
       return chart;
     });
   });
@@ -149,3 +156,10 @@ function prepQuestion(question) {
   });
   return prepped;
 }
+
+// correlations
+// * Morality is a social construct vs certain things such as racism etc
+// * We possess no knowledge at birth vs The only things we can be said to know are things we have experienced
+// * The only things we can be said to know are things we have experienced vs It is better to hold false but comforting beliefs, than to know something disturbing
+// * It is better to hold false but comforting beliefs, than to know something disturbing vs The most important goal of life is to become happy
+// * Our perceptions accurately represent reality vs The only things we can be said to know are things we have experienced
